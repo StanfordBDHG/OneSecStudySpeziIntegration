@@ -1,9 +1,9 @@
 // swift-tools-version:6.0
 
 //
-// This source file is part of the TemplatePackage open source project
+// This source file is part of the SpeziOneSec open source project
 // 
-// SPDX-FileCopyrightText: 2022 Stanford University and the project authors (see CONTRIBUTORS.md)
+// SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
 // 
 // SPDX-License-Identifier: MIT
 //
@@ -13,28 +13,43 @@ import PackageDescription
 
 
 let package = Package(
-    name: "TemplatePackage",
+    name: "SpeziOneSec",
     platforms: [
-        .iOS(.v17),
-        .watchOS(.v10),
-        .visionOS(.v1),
-        .tvOS(.v17),
-        .macOS(.v14)
+        .iOS(.v17)
     ],
     products: [
-        .library(name: "TemplatePackage", targets: ["TemplatePackage"])
+        .library(name: "SpeziOneSec", targets: ["SpeziOneSec"])
     ],
     dependencies: [
+        .package(url: "https://github.com/StanfordSpezi/Spezi.git", from: "1.9.0"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.2.1"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),
+        .package(url: "https://github.com/StanfordBDHG/HealthKitOnFHIR.git", from: "1.1.2"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziStorage.git", from: "2.1.1"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziViews.git", from: "1.12.1")
     ] + swiftLintPackage(),
     targets: [
         .target(
-            name: "TemplatePackage",
+            name: "SpeziOneSec",
+            dependencies: [
+                .product(name: "Spezi", package: "Spezi"),
+                .product(name: "SpeziFoundation", package: "SpeziFoundation"),
+                .product(name: "SpeziHealthKit", package: "SpeziHealthKit"),
+                .product(name: "SpeziHealthKitBulkExport", package: "SpeziHealthKit"),
+                .product(name: "HealthKitOnFHIR", package: "HealthKitOnFHIR"),
+                .product(name: "SpeziLocalStorage", package: "SpeziStorage"),
+                .product(name: "SpeziViews", package: "SpeziViews")
+            ],
+            swiftSettings: [
+                .enableUpcomingFeature("ExistentialAny"),
+                .enableUpcomingFeature("InternalImportsByDefault")
+            ],
             plugins: [] + swiftLintPlugin()
         ),
         .testTarget(
-            name: "TemplatePackageTests",
+            name: "SpeziOneSecTests",
             dependencies: [
-                .target(name: "TemplatePackage")
+                .target(name: "SpeziOneSec")
             ],
             plugins: [] + swiftLintPlugin()
         )
