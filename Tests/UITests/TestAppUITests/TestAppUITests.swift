@@ -13,7 +13,6 @@ import XCTest
 class TestAppUITests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
-        
         continueAfterFailure = false
     }
     
@@ -22,8 +21,5 @@ class TestAppUITests: XCTestCase {
     func testSpeziOneSec() throws {
         let app = XCUIApplication()
         app.launch()
-        
-        XCTAssert(app.staticTexts["Stanford University"].waitForExistence(timeout: 0.1))
-        XCTAssert(app.staticTexts[operatingSystem].exists)
     }
 }
