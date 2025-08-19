@@ -50,15 +50,20 @@ public struct SignUpSheet: View {
     
     @ViewBuilder private var cancelButton: some View {
         Group {
+            let fallbackButton = Button("Cancel", role: .cancel) {
+                isShowingCancelAlert = true
+            }
+            #if compiler(>=6.2)
             if #available(iOS 26, *) {
                 Button(role: .cancel) {
                     isShowingCancelAlert = true
                 }
             } else {
-                Button("Cancel", role: .cancel) {
-                    isShowingCancelAlert = true
-                }
+                fallbackButton
             }
+            #else
+            fallbackButton
+            #endif
         }
         .alert("Cancel Enrollment", isPresented: $isShowingCancelAlert) {
             Button("No", role: .cancel) {
@@ -78,16 +83,21 @@ public struct SignUpSheet: View {
     }
     
     @ViewBuilder private var confirmButton: some View {
+        let fallbackButton = Button("Done") {
+            dismiss()
+        }
+        .bold()
+        #if compiler(>=6.2)
         if #available(iOS 26, *) {
             Button(role: .confirm) {
                 dismiss()
             }
         } else {
-            Button("Done") {
-                dismiss()
-            }
-            .bold()
+            fallbackButton
         }
+        #else
+        fallbackButton
+        #endif
     }
     
     public init() {}
