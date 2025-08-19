@@ -106,7 +106,7 @@ public struct SignUpSheet: View {
         do {
             try await speziOneSec.initiateBulkExport()
         } catch {
-            // TODO how to handle this? (will depend on the specific error. eg for missing permissions we could throw up an alert, etc)
+            // Q how to handle this? (will depend on the specific error. eg for missing permissions we could throw up an alert, etc)
             speziOneSec.logger.error("Error initiating bulk health export: \(error)")
         }
     }

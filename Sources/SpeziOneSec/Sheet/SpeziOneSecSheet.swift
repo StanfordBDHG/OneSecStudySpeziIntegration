@@ -22,7 +22,7 @@ public struct SpeziOneSecSheet: View {
             case .unavailable:
                 ContentUnavailableView(
                     "Not Available",
-                    image: "dryer.fill", // TODO good icon here!
+                    image: "exclamationmark.octagon",
                     description: Text("The [TODO NAME?] Study is not available at this time.")
                 )
             case .available, .initiating:
