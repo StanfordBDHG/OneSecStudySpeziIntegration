@@ -15,18 +15,18 @@ import PackageDescription
 let package = Package(
     name: "SpeziOneSec",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v15)
     ],
     products: [
         .library(name: "SpeziOneSec", targets: ["SpeziOneSec"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi.git", branch: "lukas/alternate-injection"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.2.1"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),
-        .package(url: "https://github.com/StanfordBDHG/HealthKitOnFHIR.git", from: "1.1.2"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziStorage.git", from: "2.1.1"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziViews.git", from: "1.12.1")
+        .package(url: "https://github.com/riedel-wtf/Spezi.git", branch: "ios-15-deployment"),
+        .package(url: "https://github.com/riedel-wtf/SpeziFoundation.git", branch: "ios-15-deployment"),
+        .package(url: "https://github.com/riedel-wtf/SpeziHealthKit.git", branch: "ios-15-deployment"),
+        .package(url: "https://github.com/riedel-wtf/HealthKitOnFHIR.git", branch: "ios-15-deployment"),
+        .package(url: "https://github.com/riedel-wtf/SpeziStorage.git", branch: "ios-15-deployment"),
+        .package(url: "https://github.com/riedel-wtf/SpeziViews.git", branch: "ios-15-deployment")
     ] + swiftLintPackage(),
     targets: [
         .target(
