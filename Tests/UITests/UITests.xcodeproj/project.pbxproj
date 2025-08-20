@@ -12,7 +12,7 @@
 		8027B0892E56278A001E0A8F /* BridgeFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0822E56278A001E0A8F /* BridgeFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8027B08E2E5627C9001E0A8F /* BridgeInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0702E562778001E0A8F /* BridgeInterface.framework */; };
 		8027B08F2E5627C9001E0A8F /* BridgeInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0702E562778001E0A8F /* BridgeInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8027B0942E562EA2001E0A8F /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 8027B0932E562EA2001E0A8F /* SpeziOneSec */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8027B0942E562EA2001E0A8F /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 8027B0932E562EA2001E0A8F /* SpeziOneSec */; settings = {ATTRIBUTES = (Required, ); }; };
 		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
 /* End PBXBuildFile section */
 
