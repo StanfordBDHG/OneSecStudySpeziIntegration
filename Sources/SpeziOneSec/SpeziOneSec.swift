@@ -17,6 +17,7 @@ internal import SpeziLocalStorage
 /// The SpeziOneSec module.
 @Observable
 @MainActor
+@available(iOS 17.0, *)
 public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
     public enum State: Int, Hashable, Codable, Sendable {
         /// The Spezi one sec integration is, for whatever reason, not available.
@@ -91,6 +92,7 @@ public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
 
 // MARK: HealthKit Data Collection
 
+@available(iOS 17.0, *)
 extension SpeziOneSec {
     func initiateBulkExport() async throws {
         if !fileManager.itemExists(at: healthExportConfig.destination) {
@@ -122,6 +124,7 @@ extension BulkExportSessionIdentifier {
     fileprivate static let speziOneSec = Self("edu.stanford.SpeziOneSec")
 }
 
+@available(iOS 17.0, *)
 extension LocalStorageKeys {
     fileprivate static let speziOneSecState = LocalStorageKey<SpeziOneSec.State>("edu.stanford.SpeziOneSec.state")
     fileprivate static let didInitiateBulkExport = LocalStorageKey<Bool>("edu.stanford.SpeziOneSec.didInitiateBulkExport")

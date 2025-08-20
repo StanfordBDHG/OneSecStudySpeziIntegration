@@ -14,6 +14,7 @@ public import SwiftUI
 private import WebKit
 
 
+@available(iOS 17.0, *)
 public struct SignUpSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SpeziOneSec.self) private var speziOneSec
@@ -113,6 +114,7 @@ public struct SignUpSheet: View {
 }
 
 
+@available(iOS 17.0, *)
 private struct WebView: UIViewRepresentable {
     @Environment(SpeziOneSec.self) private var speziOneSec
     let url: URL
@@ -139,6 +141,7 @@ private struct WebView: UIViewRepresentable {
 }
 
 
+@available(iOS 17.0, *)
 extension WebView {
     final class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebView

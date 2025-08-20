@@ -9,7 +9,7 @@
 import SpeziViews
 import SwiftUI
 
-
+@available(iOS 17.0, *)
 struct EnrolledSheet: View {
     private static let stanfordUrl = URL(string: "https://stanford.edu")! // swiftlint:disable:this force_unwrapping
     

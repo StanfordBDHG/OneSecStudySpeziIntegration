@@ -8,7 +8,7 @@
 
 public import SwiftUI
 
-
+@available(iOS 17.0, *)
 public struct SpeziOneSecSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SpeziOneSec.self) private var speziOneSec
