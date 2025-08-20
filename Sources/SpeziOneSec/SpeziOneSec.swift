@@ -18,13 +18,14 @@ internal import SpeziLocalStorage
 @Observable
 @MainActor
 public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
-    enum State: Int, Hashable, Codable, Sendable {
+    public enum State: Int, Hashable, Codable, Sendable {
+        /// The Spezi one sec integration is, for whatever reason, not available.
         case unavailable
-        /// The Spezi one sec integration is available, but hasn't yet been initiated
+        /// The Spezi one sec integration is available, but hasn't yet been initiated.
         case available
-        /// The Spezi one sec integration is currently being initiated
+        /// The Spezi one sec integration is currently being initiated.
         case initiating
-        /// The Spezi one sec integration is currently active
+        /// The Spezi one sec integration is currently active.
         case active
         /// The Spezi one sec integration has been completed.
         case completed
@@ -52,7 +53,7 @@ public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
     nonisolated private let healthExportConfig: HealthExportConfiguration
     nonisolated(unsafe) private let fileManager = FileManager.default
     
-    var state: State = .unavailable {
+    public internal(set) var state: State = .unavailable {
         didSet {
             try? localStorage.store(state, for: .speziOneSecState)
         }
