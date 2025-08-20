@@ -6,12 +6,14 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SpeziOneSec
+// swiftlint:disable all
+
+//import SpeziOneSec
 import SwiftUI
 
 
 struct ContentView: View {
-    @Environment(SpeziOneSec.self) private var speziOneSec
+//    @Environment(SpeziOneSec.self) private var speziOneSec
     
     @State private var isShowingSheet1 = false
     
@@ -23,10 +25,10 @@ struct ContentView: View {
         }
         .onAppear {
             // swiftlint:disable:next force_try
-            speziOneSec.surveyUrl = try! URL("https://redcap.stanford.edu/surveys/?s=X3LE4CMD9FR4LKN8", strategy: .url)
+//            speziOneSec.surveyUrl = try! URL("https://redcap.stanford.edu/surveys/?s=X3LE4CMD9FR4LKN8", strategy: .url)
         }
-        .sheet(isPresented: $isShowingSheet1) {
-            SpeziOneSecSheet()
-        }
+//        .sheet(isPresented: $isShowingSheet1) {
+//            SpeziOneSecSheet()
+//        }
     }
 }

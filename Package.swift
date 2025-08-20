@@ -21,7 +21,7 @@ let package = Package(
         .library(name: "SpeziOneSec", targets: ["SpeziOneSec"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi.git", from: "1.9.0"),
+        .package(url: "https://github.com/StanfordSpezi/Spezi.git", branch: "lukas/alternate-injection"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.2.1"),
         .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),
         .package(url: "https://github.com/StanfordBDHG/HealthKitOnFHIR.git", from: "1.1.2"),

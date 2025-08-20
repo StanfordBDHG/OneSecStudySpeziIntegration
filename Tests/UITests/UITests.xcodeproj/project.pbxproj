@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F68C3C8292EA52000B3E12C /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 2F68C3C7292EA52000B3E12C /* SpeziOneSec */; };
+		8027B0762E562778001E0A8F /* BridgeInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0702E562778001E0A8F /* BridgeInterface.framework */; };
+		8027B0772E562778001E0A8F /* BridgeInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0702E562778001E0A8F /* BridgeInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8027B0892E56278A001E0A8F /* BridgeFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0822E56278A001E0A8F /* BridgeFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8027B08E2E5627C9001E0A8F /* BridgeInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0702E562778001E0A8F /* BridgeInterface.framework */; };
+		8027B08F2E5627C9001E0A8F /* BridgeInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8027B0702E562778001E0A8F /* BridgeInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8027B0942E562EA2001E0A8F /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 8027B0932E562EA2001E0A8F /* SpeziOneSec */; settings = {ATTRIBUTES = (Weak, ); }; };
 		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
 /* End PBXBuildFile section */
 
@@ -18,6 +23,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2F6D139128F5F384007C25D6;
 			remoteInfo = Example;
+		};
+		8027B0742E562778001E0A8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F6D138A28F5F384007C25D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8027B06F2E562778001E0A8F;
+			remoteInfo = BridgeInterface;
+		};
+		8027B0862E56278A001E0A8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F6D138A28F5F384007C25D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8027B0812E56278A001E0A8F;
+			remoteInfo = BridgeFramework;
+		};
+		8027B0902E5627C9001E0A8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F6D138A28F5F384007C25D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8027B06F2E562778001E0A8F;
+			remoteInfo = BridgeInterface;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -32,6 +58,29 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8027B07C2E562778001E0A8F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8027B0892E56278A001E0A8F /* BridgeFramework.framework in Embed Frameworks */,
+				8027B0772E562778001E0A8F /* BridgeInterface.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B0922E5627C9001E0A8F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8027B08F2E5627C9001E0A8F /* BridgeInterface.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +88,22 @@
 		2F6D139228F5F384007C25D6 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB0758A299DDB9000C0B37F /* TestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestApp.xctestplan; sourceTree = "<group>"; };
+		8027B0702E562778001E0A8F /* BridgeInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BridgeInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027B0822E56278A001E0A8F /* BridgeFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BridgeFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FCAA082E4E3BE700A054D6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8027B0712E562778001E0A8F /* BridgeInterface */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BridgeInterface;
+			sourceTree = "<group>";
+		};
+		8027B0832E56278A001E0A8F /* BridgeFramework */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BridgeFramework;
+			sourceTree = "<group>";
+		};
 		80B77CF62E422FB70089C6B4 /* TestApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TestApp;
@@ -60,8 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8027B0762E562778001E0A8F /* BridgeInterface.framework in Frameworks */,
 				80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */,
-				2F68C3C8292EA52000B3E12C /* SpeziOneSec in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +130,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B06D2E562778001E0A8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B07F2E56278A001E0A8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8027B08E2E5627C9001E0A8F /* BridgeInterface.framework in Frameworks */,
+				8027B0942E562EA2001E0A8F /* SpeziOneSec in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +159,8 @@
 				2F68C3C6292E9F8F00B3E12C /* SpeziOneSec */,
 				80B77CF62E422FB70089C6B4 /* TestApp */,
 				80B77D022E422FBB0089C6B4 /* TestAppUITests */,
+				8027B0712E562778001E0A8F /* BridgeInterface */,
+				8027B0832E56278A001E0A8F /* BridgeFramework */,
 				2F6D139328F5F384007C25D6 /* Products */,
 				2F6D13C228F5F3BE007C25D6 /* Frameworks */,
 			);
@@ -92,6 +171,8 @@
 			children = (
 				2F6D139228F5F384007C25D6 /* TestApp.app */,
 				2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */,
+				8027B0702E562778001E0A8F /* BridgeInterface.framework */,
+				8027B0822E56278A001E0A8F /* BridgeFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,6 +187,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		8027B06B2E562778001E0A8F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B07D2E56278A001E0A8F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		2F6D139128F5F384007C25D6 /* TestApp */ = {
 			isa = PBXNativeTarget;
@@ -115,17 +213,19 @@
 				2F6D138F28F5F384007C25D6 /* Frameworks */,
 				2F6D139028F5F384007C25D6 /* Resources */,
 				2F9CBECE2A76C412009818FF /* Embed Watch Content */,
+				8027B07C2E562778001E0A8F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8027B0752E562778001E0A8F /* PBXTargetDependency */,
+				8027B0872E56278A001E0A8F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				80B77CF62E422FB70089C6B4 /* TestApp */,
 			);
 			name = TestApp;
 			packageProductDependencies = (
-				2F68C3C7292EA52000B3E12C /* SpeziOneSec */,
 			);
 			productName = Example;
 			productReference = 2F6D139228F5F384007C25D6 /* TestApp.app */;
@@ -152,6 +252,55 @@
 			productReference = 2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8027B06F2E562778001E0A8F /* BridgeInterface */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8027B0782E562778001E0A8F /* Build configuration list for PBXNativeTarget "BridgeInterface" */;
+			buildPhases = (
+				8027B06B2E562778001E0A8F /* Headers */,
+				8027B06C2E562778001E0A8F /* Sources */,
+				8027B06D2E562778001E0A8F /* Frameworks */,
+				8027B06E2E562778001E0A8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8027B0712E562778001E0A8F /* BridgeInterface */,
+			);
+			name = BridgeInterface;
+			packageProductDependencies = (
+			);
+			productName = BridgeInterface;
+			productReference = 8027B0702E562778001E0A8F /* BridgeInterface.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8027B0812E56278A001E0A8F /* BridgeFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8027B08A2E56278A001E0A8F /* Build configuration list for PBXNativeTarget "BridgeFramework" */;
+			buildPhases = (
+				8027B07D2E56278A001E0A8F /* Headers */,
+				8027B07E2E56278A001E0A8F /* Sources */,
+				8027B07F2E56278A001E0A8F /* Frameworks */,
+				8027B0802E56278A001E0A8F /* Resources */,
+				8027B0922E5627C9001E0A8F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8027B0912E5627C9001E0A8F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8027B0832E56278A001E0A8F /* BridgeFramework */,
+			);
+			name = BridgeFramework;
+			packageProductDependencies = (
+				8027B0932E562EA2001E0A8F /* SpeziOneSec */,
+			);
+			productName = BridgeFramework;
+			productReference = 8027B0822E56278A001E0A8F /* BridgeFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -159,7 +308,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					2F6D139128F5F384007C25D6 = {
@@ -168,6 +317,12 @@
 					2F6D13AB28F5F386007C25D6 = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 2F6D139128F5F384007C25D6;
+					};
+					8027B06F2E562778001E0A8F = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					8027B0812E56278A001E0A8F = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -186,6 +341,8 @@
 			targets = (
 				2F6D139128F5F384007C25D6 /* TestApp */,
 				2F6D13AB28F5F386007C25D6 /* TestAppUITests */,
+				8027B06F2E562778001E0A8F /* BridgeInterface */,
+				8027B0812E56278A001E0A8F /* BridgeFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -199,6 +356,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F6D13AA28F5F386007C25D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B06E2E562778001E0A8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B0802E56278A001E0A8F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -222,6 +393,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8027B06C2E562778001E0A8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B07E2E56278A001E0A8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -229,6 +414,21 @@
 			isa = PBXTargetDependency;
 			target = 2F6D139128F5F384007C25D6 /* TestApp */;
 			targetProxy = 2F6D13AD28F5F386007C25D6 /* PBXContainerItemProxy */;
+		};
+		8027B0752E562778001E0A8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8027B06F2E562778001E0A8F /* BridgeInterface */;
+			targetProxy = 8027B0742E562778001E0A8F /* PBXContainerItemProxy */;
+		};
+		8027B0872E56278A001E0A8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8027B0812E56278A001E0A8F /* BridgeFramework */;
+			targetProxy = 8027B0862E56278A001E0A8F /* PBXContainerItemProxy */;
+		};
+		8027B0912E5627C9001E0A8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8027B06F2E562778001E0A8F /* BridgeInterface */;
+			targetProxy = 8027B0902E5627C9001E0A8F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -378,12 +578,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -414,12 +615,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -439,7 +641,7 @@
 				DEVELOPMENT_TEAM = 637867499T;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -460,7 +662,7 @@
 				DEVELOPMENT_TEAM = 637867499T;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -558,12 +760,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -583,7 +786,7 @@
 				DEVELOPMENT_TEAM = 637867499T;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -595,6 +798,245 @@
 				TEST_TARGET_NAME = TestApp;
 			};
 			name = Test;
+		};
+		8027B0792E562778001E0A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.BridgeInterface;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8027B07A2E562778001E0A8F /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.BridgeInterface;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Test;
+		};
+		8027B07B2E562778001E0A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.BridgeInterface;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8027B08B2E56278A001E0A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "$(PRODUCT_MODULE_NAME).PrincipalClass";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.BridgeFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8027B08C2E56278A001E0A8F /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "$(PRODUCT_MODULE_NAME).PrincipalClass";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.BridgeFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Test;
+		};
+		8027B08D2E56278A001E0A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "$(PRODUCT_MODULE_NAME).PrincipalClass";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.BridgeFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -629,10 +1071,30 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8027B0782E562778001E0A8F /* Build configuration list for PBXNativeTarget "BridgeInterface" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8027B0792E562778001E0A8F /* Debug */,
+				8027B07A2E562778001E0A8F /* Test */,
+				8027B07B2E562778001E0A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8027B08A2E56278A001E0A8F /* Build configuration list for PBXNativeTarget "BridgeFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8027B08B2E56278A001E0A8F /* Debug */,
+				8027B08C2E56278A001E0A8F /* Test */,
+				8027B08D2E56278A001E0A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2F68C3C7292EA52000B3E12C /* SpeziOneSec */ = {
+		8027B0932E562EA2001E0A8F /* SpeziOneSec */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SpeziOneSec;
 		};
