@@ -6,7 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import BridgeInterface
+import Spezi
+import SpeziOneSec
 import SwiftUI
 
 
@@ -27,26 +28,31 @@ struct UITestsApp: App {
                     }
                 }
             }
-            .spezi(delegate)
+            .conditionallyApply { view in
+                if #available(iOS 17, *) {
+                    view.spezi(delegate)
+                }
+            }
         }
     }
+    
 }
 
 
-extension View {
-    @ViewBuilder
-    func spezi(_ delegate: TestAppDelegate) -> some View {
-        if let bridge = delegate.bridge {
-            AnyView(bridge.speziInjectionViewModifier.applying(to: self))
-        } else {
-            self
-        }
-    }
-}
-
-
-extension ViewModifier {
-    func applying(to view: some View) -> some View {
-        view.modifier(self)
-    }
-}
+//extension View {
+//    @ViewBuilder
+//    func spezi(_ delegate: TestAppDelegate) -> some View {
+//        if let bridge = delegate.bridge {
+//            AnyView(bridge.speziInjectionViewModifier.applying(to: self))
+//        } else {
+//            self
+//        }
+//    }
+//}
+//
+//
+//extension ViewModifier {
+//    func applying(to view: some View) -> some View {
+//        view.modifier(self)
+//    }
+//}

@@ -11,14 +11,14 @@ import SwiftUI
 import UIKit
 
 
-public protocol BridgeInterfaceProtocol: AnyObject {
-    associatedtype SpeziInjectionModifier: ViewModifier
-    
-    @MainActor static var speziInjectionViewModifier: SpeziInjectionModifier { get }
-    
-    @MainActor
-    static func initialize(
-        application: UIApplication,
-        launchOptions: [UIApplication.LaunchOptionsKey: Any]? // swiftlint:disable:this discouraged_optional_collection
-    )
-}
+//public protocol BridgeInterfaceProtocol: AnyObject {
+//    associatedtype SpeziInjectionModifier: ViewModifier
+//    
+//    @MainActor static var speziInjectionViewModifier: SpeziInjectionModifier { get }
+//    
+//    @MainActor
+//    static func initialize(
+//        application: UIApplication,
+//        launchOptions: [UIApplication.LaunchOptionsKey: Any]? // swiftlint:disable:this discouraged_optional_collection
+//    )
+//}
