@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import BridgeInterface
+import Observation
 import SwiftUI
 
 

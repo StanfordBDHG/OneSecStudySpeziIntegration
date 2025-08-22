@@ -9,19 +9,19 @@
 // swiftlint:disable file_types_order
 
 private import Spezi
-private import SpeziViews
-public import SwiftUI
+import SpeziOneSecInterface
+import SwiftUI
 private import WebKit
 
 
-public struct SignUpSheet: View {
+struct SignUpSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SpeziOneSec.self) private var speziOneSec
     
     @State private var isShowingCancelAlert = false
     @State private var isDone = false
     
-    public var body: some View {
+    var body: some View {
         if let url = speziOneSec.surveyUrl {
             NavigationStack {
                 WebView(url: url, isDone: $isDone) {
@@ -100,8 +100,6 @@ public struct SignUpSheet: View {
         #endif
     }
     
-    public init() {}
-    
     private func initiateHealthExport() async {
         do {
             try await speziOneSec.initiateBulkExport()
@@ -157,7 +155,7 @@ extension WebView {
                     "document.getElementById('surveyacknowledgment') !== null"
                 ) as? Bool == true {
                     parent.isDone = true
-                    parent.speziOneSec.state = .active
+                    parent.speziOneSec.updateState(.active)
                 }
             }
         }

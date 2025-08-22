@@ -18,27 +18,27 @@ let package = Package(
         .iOS(.v17)
     ],
     products: [
-        .library(name: "SpeziOneSec", targets: ["SpeziOneSec"])
+        .library(name: "SpeziOneSec", type: .dynamic, targets: ["SpeziOneSec"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi.git", branch: "lukas/alternate-injection"),
+        .package(url: "https://github.com/lukaskollmer/OneSecStudySpeziIntegrationInterface.git", branch: "lukas/initial"),
+        .package(url: "https://github.com/StanfordSpezi/Spezi.git", revision: "9641d9ded8f06e9989533973cb95be4af19a6888"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.2.1"),
         .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),
         .package(url: "https://github.com/StanfordBDHG/HealthKitOnFHIR.git", from: "1.1.2"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziStorage.git", from: "2.1.1"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziViews.git", from: "1.12.1")
+        .package(url: "https://github.com/StanfordSpezi/SpeziStorage.git", from: "2.1.1")
     ] + swiftLintPackage(),
     targets: [
         .target(
             name: "SpeziOneSec",
             dependencies: [
+                .product(name: "SpeziOneSecInterface", package: "OneSecStudySpeziIntegrationInterface"),
                 .product(name: "Spezi", package: "Spezi"),
                 .product(name: "SpeziFoundation", package: "SpeziFoundation"),
                 .product(name: "SpeziHealthKit", package: "SpeziHealthKit"),
                 .product(name: "SpeziHealthKitBulkExport", package: "SpeziHealthKit"),
                 .product(name: "HealthKitOnFHIR", package: "HealthKitOnFHIR"),
-                .product(name: "SpeziLocalStorage", package: "SpeziStorage"),
-                .product(name: "SpeziViews", package: "SpeziViews")
+                .product(name: "SpeziLocalStorage", package: "SpeziStorage")
             ],
             swiftSettings: [
                 .enableUpcomingFeature("ExistentialAny"),

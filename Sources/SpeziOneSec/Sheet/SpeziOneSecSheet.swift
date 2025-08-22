@@ -6,17 +6,18 @@
 // SPDX-License-Identifier: MIT
 //
 
-public import SwiftUI
+import SpeziOneSecInterface
+import SwiftUI
 
 
-public struct SpeziOneSecSheet: View {
+struct SpeziOneSecSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(SpeziOneSec.self) private var speziOneSec
+    @Environment(SpeziOneSecModule.self) private var speziOneSec
     
     @State private var subtitle: String = ""
     @State private var isShowingCancelAlert = false
     
-    public var body: some View {
+    var body: some View {
         NavigationStack {
             switch speziOneSec.state {
             case .unavailable:
@@ -34,6 +35,4 @@ public struct SpeziOneSecSheet: View {
             }
         }
     }
-    
-    public init() {}
 }

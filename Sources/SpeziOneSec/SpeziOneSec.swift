@@ -6,45 +6,45 @@
 // SPDX-License-Identifier: MIT
 //
 
-public import Foundation
-public import Observation
-public import Spezi
-public import SpeziHealthKit
+// swiftlint:disable file_types_order
+
+@_spi(Spezi) @_spi(APISupport) import Spezi
+private import SpeziHealthKit
 private import SpeziHealthKitBulkExport
-internal import SpeziLocalStorage
+private import SpeziLocalStorage
+@_spi(APISupport) import SpeziOneSecInterface
+import SwiftUI
+import UIKit
 
 
 /// The SpeziOneSec module.
 @Observable
 @MainActor
-public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
-    public enum State: Int, Hashable, Codable, Sendable {
-        /// The Spezi one sec integration is, for whatever reason, not available.
-        case unavailable
-        /// The Spezi one sec integration is available, but hasn't yet been initiated.
-        case available
-        /// The Spezi one sec integration is currently being initiated.
-        case initiating
-        /// The Spezi one sec integration is currently active.
-        case active
-        /// The Spezi one sec integration has been completed.
-        case completed
-    }
+@objc(SpeziOneSec)
+final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Sendable {
+    private static var appDelegate: SpeziOneSecAppDelegate? // swiftlint:disable:this weak_delegate
     
-    public struct HealthExportConfiguration: Hashable, Sendable {
-        let destination: URL
-        let sampleTypes: SampleTypesCollection
-        let timeRange: Range<Date>
-        
-        /// - parameter destination: Directory to which the Health export files should be written.
-        public init(destination: URL, sampleTypes: SampleTypesCollection, timeRange: Range<Date>) {
-            self.destination = destination
-            self.sampleTypes = sampleTypes
-            self.timeRange = timeRange
+    override class var speziInjectionViewModifier: any ViewModifier {
+        struct SpeziOneSecInjectionModifier: ViewModifier {
+            let spezi: Spezi
+            func body(content: Content) -> some View {
+                if let speziOneSec = spezi.modules.lazy.compactMap({ $0 as? SpeziOneSec }).first {
+                    // SwiftUI's Environment mechanism seems to be using the static type of the parameter passed to `.environment()`,
+                    // we need to inject the module a second time (the first time being the automatic injection by Spezi,
+                    // as a result of the module's conformance to EnvironmentAccessible), and we need to explicitly specify the
+                    // static type as that of our base class.
+                    content.environment(speziOneSec as SpeziOneSecModule)
+                } else {
+                    content
+                }
+            }
         }
+        guard let spezi = SpeziAppDelegate.spezi else {
+            preconditionFailure("\(#function) accessed before 'initialize' was called!")
+        }
+        return SpeziViewModifier(spezi).concat(SpeziOneSecInjectionModifier(spezi: spezi))
     }
     
-    @ObservationIgnored @StandardActor var standard: any SpeziOneSecConstraint
     @ObservationIgnored @Application(\.logger) var logger
     @ObservationIgnored @Dependency(HealthKit.self) private var healthKit
     @ObservationIgnored @Dependency(BulkHealthExporter.self) private var bulkExporter
@@ -53,24 +53,23 @@ public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
     nonisolated private let healthExportConfig: HealthExportConfiguration
     nonisolated(unsafe) private let fileManager = FileManager.default
     
-    public internal(set) var state: State = .unavailable {
-        didSet {
-            try? localStorage.store(state, for: .speziOneSecState)
-        }
-    }
-    
-    /// The URL of the survey the user should fill out in order to enroll in the study.
-    ///
-    /// This URL should be constructed by the app, based on the survey and the token obtained from REDCap.
-    public var surveyUrl: URL?
-    
     /// Creates a new instance of the `SpeziOneSec` module
-    public nonisolated init(healthExportConfig: HealthExportConfiguration) {
+    nonisolated init(healthExportConfig: HealthExportConfiguration) {
         self.healthExportConfig = healthExportConfig
     }
     
-    public func configure() {
-        state = (try? localStorage.load(.speziOneSecState)) ?? .available
+    override class func initialize(
+        application: UIApplication,
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?, // swiftlint:disable:this discouraged_optional_collection
+        healthExportConfig: HealthExportConfiguration
+    ) {
+        let appDelegate = SpeziOneSecAppDelegate(healthExportConfig: healthExportConfig)
+        _ = appDelegate.application(application, willFinishLaunchingWithOptions: launchOptions)
+        self.appDelegate = appDelegate
+    }
+    
+    func configure() {
+        updateState((try? localStorage.load(.speziOneSecState)) ?? .available)
         Task {
             do {
                 if try localStorage.load(.didInitiateBulkExport) == true {
@@ -85,6 +84,18 @@ public final class SpeziOneSec: Module, EnvironmentAccessible, Sendable {
                 logger.error("\(error)")
             }
         }
+    }
+    
+    override func updateState(_ newState: SpeziOneSecModule.State) {
+        super.updateState(newState)
+        guard newState != state else {
+            return
+        }
+        try? localStorage.store(newState, for: .speziOneSecState)
+    }
+    
+    override func makeSpeziOneSecSheet() -> AnyView {
+        AnyView(SpeziOneSecSheet())
     }
 }
 
@@ -106,13 +117,38 @@ extension SpeziOneSec {
     private func healthExportSession() async throws -> some BulkExportSession<HKSampleToFHIRProcessor> {
         try await bulkExporter.session(
             withId: .speziOneSec,
-            for: healthExportConfig.sampleTypes,
+            for: SampleTypesCollection(healthExportConfig.sampleTypes.compactMap { $0.sampleType }),
             startDate: .absolute(healthExportConfig.timeRange.lowerBound),
             endDate: healthExportConfig.timeRange.upperBound,
             batchSize: .automatic,
             using: HKSampleToFHIRProcessor(outputDirectory: healthExportConfig.destination)
         )
     }
+}
+
+
+// MARK: App Delegate and Standard
+
+private final class SpeziOneSecAppDelegate: SpeziAppDelegate {
+    private let healthExportConfig: HealthExportConfiguration
+    
+    override var configuration: Configuration {
+        Configuration(standard: SpeziOneSecStandard()) {
+            HealthKit()
+            BulkHealthExporter()
+            SpeziOneSec(healthExportConfig: healthExportConfig)
+        }
+    }
+    
+    init(healthExportConfig: HealthExportConfiguration) {
+        self.healthExportConfig = healthExportConfig
+    }
+}
+
+
+private actor SpeziOneSecStandard: Standard, HealthKitConstraint {
+    func handleNewSamples<Sample>(_ addedSamples: some Collection<Sample>, ofType sampleType: SampleType<Sample>) async {}
+    func handleDeletedObjects<Sample>(_ deletedObjects: some Collection<HKDeletedObject>, ofType sampleType: SampleType<Sample>) async {}
 }
 
 

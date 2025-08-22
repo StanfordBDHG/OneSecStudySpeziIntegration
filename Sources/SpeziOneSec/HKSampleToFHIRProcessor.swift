@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import HealthKitOnFHIR
-import SpeziFoundation
+private import HealthKitOnFHIR
+private import SpeziFoundation
 import SpeziHealthKit
 import SpeziHealthKitBulkExport
 
