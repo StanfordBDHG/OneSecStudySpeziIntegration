@@ -6,25 +6,20 @@
 // SPDX-License-Identifier: MIT
 //
 
-import BridgeInterface
+import SpeziOneSecInterface
 import SwiftUI
 
 
 final class TestAppDelegate: NSObject, UIApplicationDelegate {
-    private(set) var bridge: (any BridgeInterfaceProtocol.Type)?
-    
     func application(
         _ application: UIApplication,
         willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? // swiftlint:disable:this discouraged_optional_collection
     ) -> Bool {
-        if #available(iOS 17, *),
-           let url = Bundle.main.privateFrameworksURL?.appending(component: "BridgeFramework.framework"),
-           let bundle = Bundle(url: url),
-           bundle.load(),
-           let bridge = bundle.principalClass as? any BridgeInterfaceProtocol.Type {
-            self.bridge = bridge
-            bridge.initialize(application: application, launchOptions: launchOptions)
-        }
+        SpeziOneSecInterface.initialize(
+            application,
+            launchOptions: launchOptions,
+            healthExportConfig: .init(destination: FileManager.default.temporaryDirectory, sampleTypes: [], timeRange: Date.now..<Date.now)
+        )
         return true
     }
 }

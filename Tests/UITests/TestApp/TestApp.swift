@@ -7,6 +7,7 @@
 //
 
 import Observation
+import SpeziOneSecInterface
 import SwiftUI
 
 
@@ -27,26 +28,7 @@ struct UITestsApp: App {
                     }
                 }
             }
-            .spezi(delegate)
+            .spezi()
         }
-    }
-}
-
-
-extension View {
-    @ViewBuilder
-    func spezi(_ delegate: TestAppDelegate) -> some View {
-        if let bridge = delegate.bridge {
-            AnyView(bridge.speziInjectionViewModifier.applying(to: self))
-        } else {
-            self
-        }
-    }
-}
-
-
-extension ViewModifier {
-    func applying(to view: some View) -> some View {
-        view.modifier(self)
     }
 }

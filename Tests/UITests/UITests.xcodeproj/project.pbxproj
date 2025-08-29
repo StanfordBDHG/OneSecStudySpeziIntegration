@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 809757DB2E61D2AD009B747D /* SpeziOneSecInterface */; };
 		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */,
+				809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,12 +132,15 @@
 			buildRules = (
 			);
 			dependencies = (
+				809757DE2E61D303009B747D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				80B77CF62E422FB70089C6B4 /* TestApp */,
 			);
 			name = TestApp;
 			packageProductDependencies = (
+				809757D72E61D282009B747D /* SpeziOneSec */,
+				809757DB2E61D2AD009B747D /* SpeziOneSecInterface */,
 			);
 			productName = Example;
 			productReference = 2F6D139228F5F384007C25D6 /* TestApp.app */;
@@ -187,6 +194,9 @@
 				Base,
 			);
 			mainGroup = 2F6D138928F5F384007C25D6;
+			packageReferences = (
+				809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2F6D139328F5F384007C25D6 /* Products */;
 			projectDirPath = "";
@@ -237,6 +247,10 @@
 			isa = PBXTargetDependency;
 			target = 2F6D139128F5F384007C25D6 /* TestApp */;
 			targetProxy = 2F6D13AD28F5F386007C25D6 /* PBXContainerItemProxy */;
+		};
+		809757DE2E61D303009B747D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 809757DD2E61D303009B747D /* SpeziOneSec */;
 		};
 /* End PBXTargetDependency section */
 
@@ -392,10 +406,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-weak_framework",
-					SpeziOneSec2,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -433,10 +443,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-weak_framework",
-					SpeziOneSec2,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -582,10 +588,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-weak_framework",
-					SpeziOneSec2,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -653,6 +655,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git";
+			requirement = {
+				branch = lukas/initial;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		809757D72E61D282009B747D /* SpeziOneSec */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpeziOneSec;
+		};
+		809757DB2E61D2AD009B747D /* SpeziOneSecInterface */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */;
+			productName = SpeziOneSecInterface;
+		};
+		809757DD2E61D303009B747D /* SpeziOneSec */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpeziOneSec;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F6D138A28F5F384007C25D6 /* Project object */;
 }
