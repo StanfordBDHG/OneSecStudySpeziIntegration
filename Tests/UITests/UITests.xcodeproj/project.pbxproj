@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 809757DB2E61D2AD009B747D /* SpeziOneSecInterface */; };
+		80E498DC2E63032F00C1917F /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; };
 		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E498DC2E63032F00C1917F /* SpeziOneSec in Frameworks */,
 				80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */,
 				809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */,
 			);
@@ -661,8 +663,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git";
 			requirement = {
-				branch = lukas/initial;
-				kind = branch;
+				kind = revision;
+				revision = 108dcc989f8f3d671bb67da86a46ce61c590bccb;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
