@@ -14,3 +14,5 @@ SpeziOneSec contributors
 ====================
 
 * [Lukas Kollmer](https://github.com/lukaskollmer)
+* [Lennart Fischer](https://github.com/LambdaDigamma)
+* [Paul Schmiedmayer](https://github.com/PSchmiedmayer)
