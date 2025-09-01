@@ -662,7 +662,7 @@
 			repositoryURL = "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git";
 			requirement = {
 				kind = revision;
-				revision = 108dcc989f8f3d671bb67da86a46ce61c590bccb;
+				revision = 969133eac91716908c27766df721403cfb67e5cf;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -109,7 +109,8 @@ extension SpeziOneSec {
         }
         try await healthKit.askForAuthorization(for: .init(read: healthExportConfig.sampleTypes))
         let session = try await healthExportSession()
-        _ = try session.start(retryFailedBatches: true)
+        let stream = try session.start(retryFailedBatches: true)
+        didStartHealthExport?(AnyAsyncSequence(stream.compactMap(\.self)))
     }
     
     
