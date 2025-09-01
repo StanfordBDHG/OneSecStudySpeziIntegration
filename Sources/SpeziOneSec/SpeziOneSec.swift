@@ -8,7 +8,7 @@
 
 // swiftlint:disable file_types_order
 
-@_spi(Spezi) @_spi(APISupport) import Spezi
+@_spi(APISupport) import Spezi
 private import SpeziHealthKit
 private import SpeziHealthKitBulkExport
 private import SpeziLocalStorage
@@ -110,7 +110,7 @@ extension SpeziOneSec {
         try await healthKit.askForAuthorization(for: .init(read: healthExportConfig.sampleTypes))
         let session = try await healthExportSession()
         let stream = try session.start(retryFailedBatches: true)
-        didStartHealthExport?(AnyAsyncSequence(stream.compactMap(\.self)))
+        healthExportConfig.didStartExport(AnyAsyncSequence(stream.compactMap(\.self)))
     }
     
     

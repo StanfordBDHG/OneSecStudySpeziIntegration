@@ -18,14 +18,16 @@ struct UITestsApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                if #available(iOS 16, *) { // swiftlint:disable:this deployment_target
-                    NavigationStack {
-                        ContentView()
-                    }
+                if #available(iOS 17, *) {
+                    StudyButton()
                 } else {
-                    NavigationView {
-                        ContentView()
-                    }
+                    Text("""
+                        You're running on a pre-iOS 17 device.
+                        
+                        The Spezi integration has not been loaded.
+                        
+                        If you can see this, everything is fine.
+                        """)
                 }
             }
             .spezi()

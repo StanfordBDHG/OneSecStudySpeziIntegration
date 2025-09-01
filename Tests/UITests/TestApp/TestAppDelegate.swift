@@ -18,8 +18,23 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
         SpeziOneSecInterface.initialize(
             application,
             launchOptions: launchOptions,
-            healthExportConfig: .init(destination: FileManager.default.temporaryDirectory, sampleTypes: [], timeRange: Date.now..<Date.now)
+            healthExportConfig: .init(
+                destination: FileManager.default.temporaryDirectory,
+                sampleTypes: [],
+                timeRange: Date.now..<Date.now
+            ) { urls in
+                Task {
+                    try await self.handleHealthExportUrls(urls)
+                }
+            }
         )
         return true
+    }
+    
+    
+    private func handleHealthExportUrls<S: AsyncSequence>(_ urls: S) async throws where S.Element == URL {
+        for try await url in urls {
+            print("Did create export batch \(url)")
+        }
     }
 }
