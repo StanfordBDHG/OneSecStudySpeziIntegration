@@ -663,8 +663,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git";
 			requirement = {
-				kind = revision;
-				revision = 5dfd7ae3bf1de5dc7920c48f526efc2e34658f69;
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
