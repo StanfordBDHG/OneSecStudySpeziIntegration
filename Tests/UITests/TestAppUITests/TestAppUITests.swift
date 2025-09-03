@@ -24,9 +24,6 @@ class TestAppUITests: XCTestCase {
         XCTAssert(app.wait(for: .runningForeground, timeout: 2))
         app.buttons["Test Alert/Confirm"].tap()
         
-        XCTAssert(app.webViews.staticTexts.matching(NSPredicate(format: "label CONTAINS[cd] 'Stanford'")).firstMatch.waitForExistence(timeout: 10))
-        return;
-        
         let webView = app.webViews.firstMatch
         let alertStatus = webView.otherElements["Alert Status"]
         let confirmStatus = webView.otherElements["Confirm Status"]

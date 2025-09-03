@@ -18,8 +18,8 @@ struct WebViewAlertAndConfimTestButton: View {
     
     var body: some View {
         Button("Test Alert/Confirm") {
-//            speziOneSec.surveyUrl = Bundle.main.url(forResource: "alert-confirm-test", withExtension: "html")
-            speziOneSec.surveyUrl = try! URL("https://stanford.edu", strategy: .url) // swiftlint:disable:this force_try
+            speziOneSec.surveyUrl = Bundle.main.url(forResource: "alert-confirm-test", withExtension: "html")
+//            speziOneSec.surveyUrl = try! URL("https://stanford.edu", strategy: .url) // swiftlint:disable:this force_try
             isSheetPresented = true
         }
         .sheet(isPresented: $isSheetPresented) {
