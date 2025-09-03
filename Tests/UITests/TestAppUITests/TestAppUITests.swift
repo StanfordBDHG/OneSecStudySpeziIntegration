@@ -24,6 +24,8 @@ class TestAppUITests: XCTestCase {
         XCTAssert(app.wait(for: .runningForeground, timeout: 2))
         app.buttons["Test Alert/Confirm"].tap()
         
+        sleep(5)
+        
         let webView = app.webViews.firstMatch
         let alertStatus = webView.otherElements["Alert Status"]
         let confirmStatus = webView.otherElements["Confirm Status"]
