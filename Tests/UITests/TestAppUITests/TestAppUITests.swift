@@ -24,14 +24,11 @@ class TestAppUITests: XCTestCase {
         XCTAssert(app.wait(for: .runningForeground, timeout: 2))
         app.buttons["Test Alert/Confirm"].tap()
         
-        sleep(5)
-        print(app.debugDescription)
-        
         let webView = app.webViews.firstMatch
         let alertStatus = webView.otherElements["Alert Status"]
         let confirmStatus = webView.otherElements["Confirm Status"]
         
-        XCTAssert(alertStatus.staticTexts["Not triggered"].waitForExistence(timeout: 1))
+        XCTAssert(alertStatus.staticTexts["Not triggered"].waitForExistence(timeout: 5))
         webView.buttons["Trigger alert()"].tap()
         // ideally we'd also assert that the alert (or confirm) status changes to "active" while presented,
         // but we skip that bc for some reason the web view's contents aren't part of the view hierarchy while the alert/sheet is active.
