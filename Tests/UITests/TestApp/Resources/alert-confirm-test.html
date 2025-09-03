@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 2px solid rgb(140 140 140);
+                font-family: sans-serif;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+            thead, tfoot {
+                background-color: rgb(228 240 245);
+            }
+            th, td {
+                border: 1px solid rgb(160 160 160);
+                padding: 8px 10px;
+                text-align: center;
+            }
+            tfoot th {
+                text-align: right;
+            }
+            tfoot td {
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            function triggerAlert() {
+                const statusElem = document.getElementById('alert-status');
+                statusElem.innerText = 'Alert active';
+                setTimeout(() => {
+                    window.alert('This is the window.alert() test!');
+                    statusElem.innerText = 'Alert dismissed';
+                }, 50);
+            }
+            function triggerConfirm() {
+                const statusElem = document.getElementById('confirm-status');
+                statusElem.innerText = 'Confirm active';
+                setTimeout(() => {
+                    const response = window.confirm('This is the window.confirm() test!');
+                    statusElem.innerText = `Confirm dismissed; response=${response}`;
+                }, 50);
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kind</th>
+                    <th>Trigger</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Alert</th>
+                    <td>
+                        <button onclick="triggerAlert();">Trigger alert()</button>
+                    </td>
+                    <td id="alert-status" aria-label="Alert Status">Not triggered</td>
+                </tr>
+                <tr>
+                    <th scope="row">Confirm</hd>
+                    <td>
+                        <button onclick="triggerConfirm();">Trigger confirm()</button>
+                    </td>
+                    <td id="confirm-status" aria-label="Confirm Status">Not triggered</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

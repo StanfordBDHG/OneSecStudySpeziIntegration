@@ -147,9 +147,6 @@ private struct WebViewImpl: UIViewRepresentable {
     
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView(frame: .zero)
-        #if DEBUG
-        webView.isInspectable = true
-        #endif
         webView.navigationDelegate = context.coordinator
         webView.uiDelegate = context.coordinator
         webView.load(URLRequest(url: config.initialUrl))

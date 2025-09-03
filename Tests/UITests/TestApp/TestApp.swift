@@ -19,7 +19,7 @@ struct UITestsApp: App {
         WindowGroup {
             Group {
                 if #available(iOS 17, *) {
-                    StudyButton()
+                    ContentView()
                 } else {
                     Text("""
                         You're running on a pre-iOS 17 device.
