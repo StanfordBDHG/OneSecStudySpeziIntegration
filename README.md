@@ -23,18 +23,18 @@ Stanford Spezi ↔ one sec integration module
 
 This Swift package implements the Stanford Spezi integration for the one sec app's Digital Interventions Outcome study.
 
-See the [SpeziOneSecIntegrationInterface](https://github.com/StanfordBDHG/SpeziOneSecIntegrationInterface) package for setup and usage instructions.
+See the [SpeziOneSecIntegrationInterface](https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface) package for setup and usage instructions.
 
 
 ### Project Structure
 
 In order to support an overall deployment target of iOS 15, this project needs to be split up into 2 separate Swift packages:
-- [SpeziOneSecIntegrationInterface](https://github.com/StanfordBDHG/SpeziOneSecIntegrationInterface)
+- [SpeziOneSecIntegrationInterface](https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface)
     - package deployment target: iOS 15
     - defines the interface of the integration
     - the app defines a dependency on this package, and adds it to its "link binary with libraries" build phase in Xcode
     - on launch, the app calls this package's `initialize` function, which, if possible, will dynamically
-- [SpeziOneSecIntegration](https://github.com/StanfordBDHG/SpeziOneSecIntegration) (this package)
+- [SpeziOneSecIntegration](https://github.com/StanfordBDHG/OneSecStudySpeziIntegration) (this package)
     - package deployment target: iOS 17
     - implements the interface defined in SpeziOneSecIntegrationInterface
     - the app defines a dependency on this package, but does not add it to its "link binary with libraries" build phase
@@ -50,7 +50,7 @@ Contributions to this project are welcome. Please make sure to read the [contrib
 
 ## License
 
-This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordSpezi/SpeziSensorKit/tree/main/LICENSES) for more information.
+This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordBDHG/OneSecStudySpeziIntegration/tree/main/LICENSES) for more information.
 
 ![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/FooterLight.png#gh-light-mode-only)
 ![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/FooterDark.png#gh-dark-mode-only)
