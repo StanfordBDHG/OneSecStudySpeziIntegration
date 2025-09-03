@@ -28,10 +28,8 @@ struct SpeziOneSecSheet: View {
                 )
             case .available, .initiating:
                 SignUpSheet()
-            case .active:
-                EnrolledSheet()
-            case .completed:
-                Text("TODO: Completed Sheet")
+            case .active, .completed:
+                EmptyView()
             }
         }
     }

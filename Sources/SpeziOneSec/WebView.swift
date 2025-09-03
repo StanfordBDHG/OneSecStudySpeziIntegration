@@ -69,8 +69,8 @@ struct WebView: View {
         } message: { config in
             Text(config.message)
         }
-        .confirmationDialog(
-            currentUrl?.host() ?? "",
+        .alert(
+            currentUrl?.host() ?? "TITLE",
             isPresented: Binding<Bool> {
                 self.confirmation != nil
             } set: { newValue in
@@ -79,19 +79,34 @@ struct WebView: View {
                     self.alert = nil
                 }
             },
-            titleVisibility: .visible,
             presenting: confirmation
         ) { config in
-            // TODO iOS 26 buttons here!!! // swiftlint:disable:this todo
-            Button("Cancel", role: .cancel) {
+            let cancelImp = {
                 config.continuation.resume(returning: false)
                 self.confirmation = nil
             }
-            Button("OK") {
+            let confirmImp = {
                 config.continuation.resume(returning: true)
                 self.confirmation = nil
             }
-            .bold()
+            #if compiler(>=6.2)
+            if #available(iOS 26, *) {
+                Button("Cancel", role: .cancel, action: cancelImp)
+                    .keyboardShortcut(.cancelAction)
+                Button("OK", role: .confirm, action: confirmImp)
+                    .keyboardShortcut(.defaultAction)
+            } else {
+                Button("Cancel", role: .cancel, action: cancelImp)
+                    .keyboardShortcut(.cancelAction)
+                Button("OK", action: confirmImp)
+                    .keyboardShortcut(.defaultAction)
+            }
+            #else
+            Button("Cancel", role: .cancel, action: cancelImp)
+                .keyboardShortcut(.cancelAction)
+            Button("OK", action: confirmImp)
+                .keyboardShortcut(.defaultAction)
+            #endif
         } message: { config in
             Text(config.message)
         }

@@ -38,12 +38,12 @@ class TestAppUITests: XCTestCase {
         
         XCTAssert(confirmStatus.staticTexts["Not triggered"].waitForExistence(timeout: 1))
         webView.buttons["Trigger confirm()"].tap()
-        XCTAssert(app.sheets.staticTexts["This is the window.confirm() test!"].waitForExistence(timeout: 2))
-        app.sheets.buttons["OK"].tap()
+        XCTAssert(app.alerts.staticTexts["This is the window.confirm() test!"].waitForExistence(timeout: 2))
+        app.alerts.buttons["OK"].tap()
         XCTAssert(confirmStatus.staticTexts["Confirm dismissed; response=true"].waitForExistence(timeout: 2))
         webView.buttons["Trigger confirm()"].tap()
-        XCTAssert(app.sheets.staticTexts["This is the window.confirm() test!"].waitForExistence(timeout: 2))
-        app.sheets.buttons["Cancel"].tap()
+        XCTAssert(app.alerts.staticTexts["This is the window.confirm() test!"].waitForExistence(timeout: 2))
+        app.alerts.buttons["Cancel"].tap()
         XCTAssert(confirmStatus.staticTexts["Confirm dismissed; response=false"].waitForExistence(timeout: 2))
     }
 }
