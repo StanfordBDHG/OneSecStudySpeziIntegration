@@ -32,11 +32,11 @@ jobs:
       fail-fast: false
     with:
       runsonlabels: '["macOS", "self-hosted"]'
-      scheme: OneSecStudySpeziIntegrationInterface
+      scheme: SpeziOneSec
       destination: ${{ matrix.platform.destination }}
       buildConfig: ${{ matrix.config }}
-      resultBundle: ${{ format('OneSecStudySpeziIntegrationInterface-{0}-{1}.xcresult', matrix.platform.name, matrix.config) }}
-      artifactname: ${{ format('OneSecStudySpeziIntegrationInterface-{0}-{1}.xcresult', matrix.platform.name, matrix.config) }}
+      resultBundle: ${{ format('SpeziOneSec-{0}-{1}.xcresult', matrix.platform.name, matrix.config) }}
+      artifactname: ${{ format('SpeziOneSec-{0}-{1}.xcresult', matrix.platform.name, matrix.config) }}
   ui_tests:
     name: Build and Test UI Tests ${{ matrix.platform.name }} (${{ matrix.config }})
     uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
@@ -61,6 +61,6 @@ jobs:
     needs: [package_tests, ui_tests]
     uses: StanfordBDHG/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
-      coveragereports: OneSecStudySpeziIntegrationInterface-*.xcresult TestApp-*.xcresult
+      coveragereports: SpeziOneSec-*.xcresult TestApp-*.xcresult
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}
