@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F68C3C8292EA52000B3E12C /* TemplatePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 2F68C3C7292EA52000B3E12C /* TemplatePackage */; };
-		2F9CBEC92A76C412009818FF /* TestApp Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2F9CBEA62A76C40E009818FF /* TestApp Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2F9CBEDA2A76C795009818FF /* TemplatePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9CBED92A76C795009818FF /* TemplatePackage */; };
+		808D39EC2E68401400431D20 /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; };
+		809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 809757DB2E61D2AD009B747D /* SpeziOneSecInterface */; };
+		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,27 +21,6 @@
 			remoteGlobalIDString = 2F6D139128F5F384007C25D6;
 			remoteInfo = Example;
 		};
-		2F9CBEC02A76C412009818FF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2F6D138A28F5F384007C25D6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2F9CBEA52A76C40E009818FF;
-			remoteInfo = "TestAppWatchOS Watch App";
-		};
-		2F9CBEC72A76C412009818FF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2F6D138A28F5F384007C25D6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2F9CBEA52A76C40E009818FF;
-			remoteInfo = "TestAppWatchOS Watch App";
-		};
-		2FF8922F2A770DE200903A5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2F6D138A28F5F384007C25D6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2F6D139128F5F384007C25D6;
-			remoteInfo = TestApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,47 +30,34 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				2F9CBEC92A76C412009818FF /* TestApp Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027B07C2E562778001E0A8F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2F68C3C6292E9F8F00B3E12C /* TemplatePackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TemplatePackage; path = ../..; sourceTree = "<group>"; };
+		2F68C3C6292E9F8F00B3E12C /* SpeziOneSec */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SpeziOneSec; path = ../..; sourceTree = "<group>"; };
 		2F6D139228F5F384007C25D6 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F9CBEA62A76C40E009818FF /* TestApp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F9CBEBF2A76C412009818FF /* TestAppWatchAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppWatchAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB0758A299DDB9000C0B37F /* TestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestApp.xctestplan; sourceTree = "<group>"; };
-		2FF8922E2A770D4200903A5A /* TestAppWatchApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestAppWatchApp.xctestplan; sourceTree = "<group>"; };
+		80FCAA082E4E3BE700A054D6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		80B77CFF2E422FB70089C6B4 /* Exceptions for "TestApp" folder in "TestAppUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				OperatingSystem.swift,
-			);
-			target = 2F6D13AB28F5F386007C25D6 /* TestAppUITests */;
-		};
-		80B77D002E422FB70089C6B4 /* Exceptions for "TestApp" folder in "TestAppWatchAppUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				OperatingSystem.swift,
-			);
-			target = 2F9CBEBE2A76C412009818FF /* TestAppWatchAppUITests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		80B77CF62E422FB70089C6B4 /* TestApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				80B77CFF2E422FB70089C6B4 /* Exceptions for "TestApp" folder in "TestAppUITests" target */,
-				80B77D002E422FB70089C6B4 /* Exceptions for "TestApp" folder in "TestAppWatchAppUITests" target */,
-			);
 			path = TestApp;
 			sourceTree = "<group>";
 		};
@@ -106,26 +73,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F68C3C8292EA52000B3E12C /* TemplatePackage in Frameworks */,
+				808D39EC2E68401400431D20 /* SpeziOneSec in Frameworks */,
+				80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */,
+				809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F6D13A928F5F386007C25D6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9CBEA32A76C40E009818FF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2F9CBEDA2A76C795009818FF /* TemplatePackage in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9CBEBC2A76C412009818FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,8 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB0758A299DDB9000C0B37F /* TestApp.xctestplan */,
-				2FF8922E2A770D4200903A5A /* TestAppWatchApp.xctestplan */,
-				2F68C3C6292E9F8F00B3E12C /* TemplatePackage */,
+				2F68C3C6292E9F8F00B3E12C /* SpeziOneSec */,
 				80B77CF62E422FB70089C6B4 /* TestApp */,
 				80B77D022E422FBB0089C6B4 /* TestAppUITests */,
 				2F6D139328F5F384007C25D6 /* Products */,
@@ -153,8 +106,6 @@
 			children = (
 				2F6D139228F5F384007C25D6 /* TestApp.app */,
 				2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */,
-				2F9CBEA62A76C40E009818FF /* TestApp Watch App.app */,
-				2F9CBEBF2A76C412009818FF /* TestAppWatchAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +113,7 @@
 		2F6D13C228F5F3BE007C25D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80FCAA082E4E3BE700A054D6 /* WebKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,18 +129,20 @@
 				2F6D138F28F5F384007C25D6 /* Frameworks */,
 				2F6D139028F5F384007C25D6 /* Resources */,
 				2F9CBECE2A76C412009818FF /* Embed Watch Content */,
+				8027B07C2E562778001E0A8F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2F9CBEC82A76C412009818FF /* PBXTargetDependency */,
+				809757DE2E61D303009B747D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				80B77CF62E422FB70089C6B4 /* TestApp */,
 			);
 			name = TestApp;
 			packageProductDependencies = (
-				2F68C3C7292EA52000B3E12C /* TemplatePackage */,
+				809757D72E61D282009B747D /* SpeziOneSec */,
+				809757DB2E61D2AD009B747D /* SpeziOneSecInterface */,
 			);
 			productName = Example;
 			productReference = 2F6D139228F5F384007C25D6 /* TestApp.app */;
@@ -215,51 +169,6 @@
 			productReference = 2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		2F9CBEA52A76C40E009818FF /* TestAppWatchApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2F9CBECA2A76C412009818FF /* Build configuration list for PBXNativeTarget "TestAppWatchApp" */;
-			buildPhases = (
-				2F9CBEA22A76C40E009818FF /* Sources */,
-				2F9CBEA32A76C40E009818FF /* Frameworks */,
-				2F9CBEA42A76C40E009818FF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				80B77CF62E422FB70089C6B4 /* TestApp */,
-			);
-			name = TestAppWatchApp;
-			packageProductDependencies = (
-				2F9CBED92A76C795009818FF /* TemplatePackage */,
-			);
-			productName = "TestAppWatchOS Watch App";
-			productReference = 2F9CBEA62A76C40E009818FF /* TestApp Watch App.app */;
-			productType = "com.apple.product-type.application";
-		};
-		2F9CBEBE2A76C412009818FF /* TestAppWatchAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2F9CBED32A76C412009818FF /* Build configuration list for PBXNativeTarget "TestAppWatchAppUITests" */;
-			buildPhases = (
-				2F9CBEBB2A76C412009818FF /* Sources */,
-				2F9CBEBC2A76C412009818FF /* Frameworks */,
-				2F9CBEBD2A76C412009818FF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2F9CBEC12A76C412009818FF /* PBXTargetDependency */,
-				2FF892302A770DE200903A5A /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				80B77D022E422FBB0089C6B4 /* TestAppUITests */,
-			);
-			name = TestAppWatchAppUITests;
-			productName = "TestAppWatchOS Watch AppUITests";
-			productReference = 2F9CBEBF2A76C412009818FF /* TestAppWatchAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -267,7 +176,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					2F6D139128F5F384007C25D6 = {
@@ -276,13 +185,6 @@
 					2F6D13AB28F5F386007C25D6 = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 2F6D139128F5F384007C25D6;
-					};
-					2F9CBEA52A76C40E009818FF = {
-						CreatedOnToolsVersion = 15.0;
-					};
-					2F9CBEBE2A76C412009818FF = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = 2F9CBEA52A76C40E009818FF;
 					};
 				};
 			};
@@ -294,6 +196,9 @@
 				Base,
 			);
 			mainGroup = 2F6D138928F5F384007C25D6;
+			packageReferences = (
+				809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2F6D139328F5F384007C25D6 /* Products */;
 			projectDirPath = "";
@@ -301,8 +206,6 @@
 			targets = (
 				2F6D139128F5F384007C25D6 /* TestApp */,
 				2F6D13AB28F5F386007C25D6 /* TestAppUITests */,
-				2F9CBEA52A76C40E009818FF /* TestAppWatchApp */,
-				2F9CBEBE2A76C412009818FF /* TestAppWatchAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -316,20 +219,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F6D13AA28F5F386007C25D6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9CBEA42A76C40E009818FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9CBEBD2A76C412009818FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,20 +242,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2F9CBEA22A76C40E009818FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9CBEBB2A76C412009818FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -375,21 +250,9 @@
 			target = 2F6D139128F5F384007C25D6 /* TestApp */;
 			targetProxy = 2F6D13AD28F5F386007C25D6 /* PBXContainerItemProxy */;
 		};
-		2F9CBEC12A76C412009818FF /* PBXTargetDependency */ = {
+		809757DE2E61D303009B747D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2F9CBEA52A76C40E009818FF /* TestAppWatchApp */;
-			targetProxy = 2F9CBEC02A76C412009818FF /* PBXContainerItemProxy */;
-		};
-		2F9CBEC82A76C412009818FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 2F9CBEA52A76C40E009818FF /* TestAppWatchApp */;
-			targetProxy = 2F9CBEC72A76C412009818FF /* PBXContainerItemProxy */;
-		};
-		2FF892302A770DE200903A5A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2F6D139128F5F384007C25D6 /* TestApp */;
-			targetProxy = 2FF8922F2A770DE200903A5A /* PBXContainerItemProxy */;
+			productRef = 809757DD2E61D303009B747D /* SpeziOneSec */;
 		};
 /* End PBXTargetDependency section */
 
@@ -525,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -532,25 +396,27 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We read samples in order to process them.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -559,6 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -566,25 +433,27 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We read samples in order to process them.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -596,7 +465,7 @@
 				DEVELOPMENT_TEAM = 637867499T;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -617,7 +486,7 @@
 				DEVELOPMENT_TEAM = 637867499T;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -627,164 +496,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TEST_TARGET_NAME = TestApp;
-			};
-			name = Release;
-		};
-		2F9CBECB2A76C412009818FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 637867499T;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.stanford.templatepackage.testapp;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.watchkitapp;
-				PRODUCT_NAME = "TestApp Watch App";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-			};
-			name = Debug;
-		};
-		2F9CBECC2A76C412009818FF /* Test */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 637867499T;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.stanford.templatepackage.testapp;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.watchkitapp;
-				PRODUCT_NAME = "TestApp Watch App";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-			};
-			name = Test;
-		};
-		2F9CBECD2A76C412009818FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 637867499T;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.stanford.templatepackage.testapp;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.watchkitapp;
-				PRODUCT_NAME = "TestApp Watch App";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-			};
-			name = Release;
-		};
-		2F9CBED42A76C412009818FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 637867499T;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.watchkitapp.uitests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = TestAppWatchApp;
-			};
-			name = Debug;
-		};
-		2F9CBED52A76C412009818FF /* Test */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 637867499T;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.watchkitapp.uitests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = TestAppWatchApp;
-			};
-			name = Test;
-		};
-		2F9CBED62A76C412009818FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 637867499T;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.watchkitapp.uitests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = TestAppWatchApp;
 			};
 			name = Release;
 		};
@@ -859,6 +570,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -866,25 +578,27 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We read samples in order to process them.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Test;
 		};
@@ -896,7 +610,7 @@
 				DEVELOPMENT_TEAM = 637867499T;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.templatepackage.testapp.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.SpeziOneSec.testapp.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -942,36 +656,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F9CBECA2A76C412009818FF /* Build configuration list for PBXNativeTarget "TestAppWatchApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2F9CBECB2A76C412009818FF /* Debug */,
-				2F9CBECC2A76C412009818FF /* Test */,
-				2F9CBECD2A76C412009818FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2F9CBED32A76C412009818FF /* Build configuration list for PBXNativeTarget "TestAppWatchAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2F9CBED42A76C412009818FF /* Debug */,
-				2F9CBED52A76C412009818FF /* Test */,
-				2F9CBED62A76C412009818FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		2F68C3C7292EA52000B3E12C /* TemplatePackage */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = TemplatePackage;
+/* Begin XCRemoteSwiftPackageReference section */
+		809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.0;
+			};
 		};
-		2F9CBED92A76C795009818FF /* TemplatePackage */ = {
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		809757D72E61D282009B747D /* SpeziOneSec */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = TemplatePackage;
+			productName = SpeziOneSec;
+		};
+		809757DB2E61D2AD009B747D /* SpeziOneSecInterface */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */;
+			productName = SpeziOneSecInterface;
+		};
+		809757DD2E61D303009B747D /* SpeziOneSec */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpeziOneSec;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

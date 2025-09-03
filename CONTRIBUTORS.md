@@ -1,17 +1,18 @@
 <!--
                   
 #
-# This source file is part of the TemplatePackage open source project
+# This source file is part of the SpeziOneSec open source project
 #
-# SPDX-FileCopyrightText: 2022 Stanford University and the project authors (see CONTRIBUTORS.md)
+# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
 #
 # SPDX-License-Identifier: MIT
 # 
              
 -->
 
-TemplatePackage contributors
+SpeziOneSec contributors
 ====================
 
+* [Lukas Kollmer](https://github.com/lukaskollmer)
+* [Lennart Fischer](https://github.com/LambdaDigamma)
 * [Paul Schmiedmayer](https://github.com/PSchmiedmayer)
-* [Vishnu Ravi](https://github.com/vishnuravi)

@@ -1,0 +1,121 @@
+//
+// This source file is part of the OneSecStudySpeziIntegration open source project
+//
+// SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+//
+// SPDX-License-Identifier: MIT
+//
+
+private import Spezi
+import SpeziOneSecInterface
+import SwiftUI
+
+
+struct SignUpSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(SpeziOneSec.self) private var speziOneSec
+    
+    @State private var isShowingCancelAlert = false
+    @State private var isDone = false
+    
+    var body: some View {
+        if let url = speziOneSec.surveyUrl {
+            NavigationStack {
+                WebView(url: url) { webView in
+                    await onNavigation(webView)
+                }
+                .navigationTitle("STUDY_NAME")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    if !isDone {
+                        ToolbarItem(placement: .cancellationAction) {
+                            cancelButton
+                        }
+                    } else {
+                        ToolbarItem(placement: .confirmationAction) {
+                            confirmButton
+                        }
+                    }
+                }
+            }
+            .interactiveDismissDisabled()
+        } else {
+            ContentUnavailableView("MISSING_URL", systemImage: "exclamationmark.triangle")
+        }
+    }
+    
+    
+    @ViewBuilder private var cancelButton: some View {
+        Group {
+            let fallbackButton = Button("Cancel", role: .cancel) {
+                isShowingCancelAlert = true
+            }
+            #if compiler(>=6.2)
+            if #available(iOS 26, *) {
+                Button(role: .cancel) {
+                    isShowingCancelAlert = true
+                }
+            } else {
+                fallbackButton
+            }
+            #else
+            fallbackButton
+            #endif
+        }
+        .alert("Cancel Enrollment", isPresented: $isShowingCancelAlert) {
+            Button("No", role: .cancel) {
+                isShowingCancelAlert = false
+            }
+            Button("Yes", role: .destructive) {
+                dismiss()
+            }
+        } message: {
+            Text(
+                """
+                Are you sure you want to cancel enrolling in the [TODO STUDY NAME] study?
+                You can re-enroll at a later time if you feel like it.
+                """
+            )
+        }
+    }
+    
+    @ViewBuilder private var confirmButton: some View {
+        let fallbackButton = Button("Done") {
+            dismiss()
+        }
+        .bold()
+        #if compiler(>=6.2)
+        if #available(iOS 26, *) {
+            Button(role: .confirm) {
+                dismiss()
+            }
+        } else {
+            fallbackButton
+        }
+        #else
+        fallbackButton
+        #endif
+    }
+    
+    private func onNavigation(_ webView: WebViewProxy) async {
+        if (try? await webView.evaluateJavaScript(
+            #"document.querySelector('div[data-mlm-field="healthkit_export_trigger"]') !== null"#
+        ) as? Bool) == true {
+            await initiateHealthExport()
+        } else if (try? await webView.evaluateJavaScript(
+            "document.getElementById('surveyacknowledgment') !== null"
+        ) as? Bool) == true {
+            isDone = true
+            speziOneSec.updateState(.active)
+        }
+    }
+    
+    private func initiateHealthExport() async {
+        do {
+            try await speziOneSec.initiateBulkExport()
+        } catch {
+            // Q how to handle this? (will depend on the specific error. eg for missing permissions we could throw up an alert, etc)
+            speziOneSec.logger.error("Error initiating bulk health export: \(error)")
+        }
+    }
+}

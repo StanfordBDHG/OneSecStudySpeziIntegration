@@ -1,5 +1,5 @@
 #
-# This source file is part of the TemplatePackage open source project
+# This source file is part of the SpeziOneSec open source project
 #
 # SPDX-FileCopyrightText: 2022 Stanford University and the project authors (see CONTRIBUTORS.md)
 #
@@ -256,8 +256,6 @@ only_rules:
   - redundant_nil_coalescing
   # Objective-C attribute (@objc) is redundant in declaration.
   - redundant_objc_attribute
-  # Initializing an optional variable with nil is redundant.
-  - redundant_optional_initialization
   # Property setter access level shouldn't be explicit if it's the same as the variable access level.
   - redundant_set_access_control
   # String enum values can be omitted when they are equal to the enumcase name.
