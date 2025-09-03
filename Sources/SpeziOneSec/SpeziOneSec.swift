@@ -110,7 +110,11 @@ extension SpeziOneSec {
         try await healthKit.askForAuthorization(for: .init(read: healthExportConfig.sampleTypes))
         let session = try await healthExportSession()
         let stream = try session.start(retryFailedBatches: true)
-        healthExportConfig.didStartExport(AnyAsyncSequence(stream.compactMap(\.self)))
+        if #available(iOS 18, *) {
+            healthExportConfig.didStartExport(AnyAsyncSequence(stream.compactMap(\.self)))
+        } else {
+            healthExportConfig.didStartExport(AnyAsyncSequence(unsafelyAssumingDoesntThrow: stream.compactMap(\.self)))
+        }
     }
     
     
