@@ -87,11 +87,10 @@ final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Senda
     }
     
     override func updateState(_ newState: SpeziOneSecModule.State) {
-        super.updateState(newState)
-        guard newState != state else {
-            return
+        if newState != state {
+            try? localStorage.store(newState, for: .speziOneSecState)
         }
-        try? localStorage.store(newState, for: .speziOneSecState)
+        super.updateState(newState)
     }
     
     override func makeSpeziOneSecSheet() -> AnyView {
