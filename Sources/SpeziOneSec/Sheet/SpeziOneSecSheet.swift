@@ -19,18 +19,7 @@ struct SpeziOneSecSheet: View {
     
     var body: some View {
         NavigationStack {
-            switch speziOneSec.state {
-            case .unavailable:
-                ContentUnavailableView(
-                    "Not Available",
-                    image: "exclamationmark.octagon",
-                    description: Text("The [TODO NAME?] Study is not available at this time.")
-                )
-            case .available, .initiating:
-                SignUpSheet()
-            case .active, .completed:
-                EmptyView()
-            }
+            StudySurveySheet()
         }
     }
 }
