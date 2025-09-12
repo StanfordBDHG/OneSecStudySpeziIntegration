@@ -19,7 +19,6 @@ struct SpeziOneSecSheet: View {
     
     var body: some View {
         NavigationStack {
-            // We never show anything else than a WebView in the top-level Spezi sheet.
             StudySurveySheet()
         }
     }
