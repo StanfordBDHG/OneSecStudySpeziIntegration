@@ -11,7 +11,7 @@ import SpeziOneSecInterface
 import SwiftUI
 
 
-struct SignUpSheet: View {
+struct StudySurveySheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SpeziOneSec.self) private var speziOneSec
     

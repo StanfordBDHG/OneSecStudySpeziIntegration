@@ -19,18 +19,8 @@ struct SpeziOneSecSheet: View {
     
     var body: some View {
         NavigationStack {
-            switch speziOneSec.state {
-            case .unavailable:
-                ContentUnavailableView(
-                    "Not Available",
-                    image: "exclamationmark.octagon",
-                    description: Text("The [TODO NAME?] Study is not available at this time.")
-                )
-            case .available, .initiating:
-                SignUpSheet()
-            case .active, .completed:
-                EmptyView()
-            }
+            // We never show anything else than a WebView in the top-level Spezi sheet.
+            StudySurveySheet()
         }
     }
 }
