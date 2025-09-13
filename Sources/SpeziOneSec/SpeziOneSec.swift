@@ -94,7 +94,7 @@ final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Senda
     }
     
     override func makeSpeziOneSecSheet() -> AnyView {
-        AnyView(SpeziOneSecSheet())
+        AnyView(StudySurveySheet())
     }
 }
 

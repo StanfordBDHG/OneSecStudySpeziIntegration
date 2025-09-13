@@ -98,11 +98,9 @@ struct StudySurveySheet: View {
     }
     
     private func onNavigation(_ webView: WebViewProxy) async {
-        if (try? await webView.pageContainsField(named: "healthkit_export_initiated") {
+        if await webView.pageContainsField(named: "healthkit_export_initiated") {
             await initiateHealthExport()
-        } else if (try? await webView.evaluateJavaScript(
-            "document.getElementById('surveyacknowledgment') !== null"
-        ) as? Bool) == true {
+        } else if await webView.pageContainsElement(withId: "surveyacknowledgment") {
             isDone = true
             speziOneSec.updateState(.active)
         }
@@ -120,9 +118,15 @@ struct StudySurveySheet: View {
 
 
 extension WebViewProxy {
-    func pageContainsField(named variableName: String) async throws -> Bool {
-        try await evaluateJavaScript(
+    func pageContainsField(named variableName: String) async -> Bool {
+        (try? await evaluateJavaScript(
             #"document.querySelector('div[data-mlm-field="\#(variableName)"]') !== null"#
-        ) as? Bool == true
+        ) as? Bool) == true
+    }
+    
+    func pageContainsElement(withId id: String) async -> Bool {
+        (try? await evaluateJavaScript(
+            "document.getElementById('\(id)') !== null"
+        ) as? Bool) == true
     }
 }
