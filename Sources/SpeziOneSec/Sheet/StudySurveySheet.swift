@@ -98,9 +98,7 @@ struct StudySurveySheet: View {
     }
     
     private func onNavigation(_ webView: WebViewProxy) async {
-        if (try? await webView.evaluateJavaScript(
-            #"document.querySelector('div[data-mlm-field="healthkit_export_trigger"]') !== null"#
-        ) as? Bool) == true {
+        if (try? await webView.pageContainsField(named: "healthkit_export_initiated") {
             await initiateHealthExport()
         } else if (try? await webView.evaluateJavaScript(
             "document.getElementById('surveyacknowledgment') !== null"
@@ -117,5 +115,14 @@ struct StudySurveySheet: View {
             // Q how to handle this? (will depend on the specific error. eg for missing permissions we could throw up an alert, etc)
             speziOneSec.logger.error("Error initiating bulk health export: \(error)")
         }
+    }
+}
+
+
+extension WebViewProxy {
+    func pageContainsField(named variableName: String) async throws -> Bool {
+        try await evaluateJavaScript(
+            #"document.querySelector('div[data-mlm-field="\#(variableName)"]') !== null"#
+        ) as? Bool == true
     }
 }

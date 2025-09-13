@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
+import HealthKit
 import SpeziOneSecInterface
 import SwiftUI
 
@@ -20,7 +21,7 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
             launchOptions: launchOptions,
             healthExportConfig: .init(
                 destination: FileManager.default.temporaryDirectory,
-                sampleTypes: [],
+                sampleTypes: [HKQuantityType(.stepCount), HKCategoryType(.sleepAnalysis)],
                 timeRange: Date.now..<Date.now
             ) { urls in
                 Task {
