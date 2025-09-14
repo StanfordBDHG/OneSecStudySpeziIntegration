@@ -24,7 +24,7 @@ struct StudySurveySheet: View {
                 WebView(url: url) { webView in
                     await onNavigation(webView)
                 }
-                .navigationTitle("STUDY_NAME")
+                .navigationTitle("Stanford Study")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     if !isDone {
