@@ -1,0 +1,436 @@
+openapi: 3.0.0
+info:
+  title: 'one sec API'
+  description: 'This is the API for the one sec platform.'
+  version: 1.0.0
+servers:
+  -
+    url: 'https://tips.one-sec.app/api/v1'
+    description: 'one sec (Production)'
+paths:
+  /tips:
+    get:
+      summary: ''
+      operationId: getTips
+      parameters:
+        -
+          name: platform
+          in: query
+          description: 'The platform filter.'
+          required: false
+          schema:
+            $ref: '#/components/schemas/FilterPlatformType'
+        -
+          name: category
+          in: query
+          description: 'The category filter.'
+          required: false
+          schema:
+            $ref: '#/components/schemas/PostCategoryType'
+      responses:
+        '200':
+          description: 'Returns a list of tips.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexTipResponse'
+  '/tips/{id}':
+    get:
+      summary: ''
+      operationId: getTip
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the tip to retrieve.'
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 'Returns a list of tips.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowTipResponse'
+components:
+  schemas:
+    AspectRatio:
+      properties:
+        width:
+          type: number
+          format: float
+        height:
+          type: number
+          format: float
+      type: object
+    CoverScaleType:
+      type: string
+      enum:
+        - fill
+        - fit
+    DocumentProseMirrorNode:
+      description: 'A document node that contains other nodes'
+      required:
+        - type
+        - content
+      properties:
+        content:
+          description: 'The content of the document'
+          type: array
+          items:
+            $ref: '#/components/schemas/ProseMirrorNode'
+      type: object
+    FilterPlatformType:
+      type: string
+      enum:
+        - iOS
+        - macOS
+        - web
+        - blog
+        - browser-extension
+        - android
+    ForegroundStyle:
+      type: string
+      enum:
+        - light
+        - dark
+        - system
+    ImageAttributes:
+      properties:
+        src:
+          description: 'The source URL of the image'
+          type: string
+          example: 'https://example.com/image.jpg'
+        alt:
+          description: 'The alt text of the image'
+          type: string
+          example: 'An example image'
+          nullable: true
+        title:
+          description: 'The title of the image'
+          type: string
+          example: 'Example Image'
+          nullable: true
+        dimensions:
+          oneOf:
+            -
+              $ref: '#/components/schemas/MediaDimensions'
+          nullable: true
+          description: 'The size of the image in pixels'
+          example: 800x600
+      type: object
+    IndexTipResponse:
+      required:
+        - posts
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostTeaser'
+      type: object
+    MediaDimensions:
+      properties:
+        width:
+          type: integer
+        height:
+          type: integer
+      type: object
+    MediaMeta:
+      properties:
+        id:
+          type: integer
+        uuid:
+          type: string
+        dimensions:
+          $ref: '#/components/schemas/MediaDimensions'
+        fullUrl:
+          type: string
+      type: object
+    BlockquoteNode:
+      description: 'A blockquote node that represents a quoted section in the document'
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/ProseMirrorNode'
+        -
+          properties:
+            type:
+              type: string
+          type: object
+    HeadingNode:
+      description: 'A heading node that represents a section heading in the document'
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/ProseMirrorNode'
+        -
+          properties:
+            attrs:
+              description: 'The attributes of the heading'
+              properties:
+                level:
+                  description: 'The level of the heading (1-6)'
+                  type: integer
+                  example: 2
+              type: object
+            type:
+              type: string
+          type: object
+    ImageNode:
+      description: 'An image node that represents an image in the document'
+      required:
+        - type
+      properties:
+        attrs:
+          $ref: '#/components/schemas/ImageAttributes'
+        notionBlockMetadata:
+          oneOf:
+            -
+              $ref: '#/components/schemas/NotionImageBlockMetadata'
+          nullable: true
+        type:
+          type: string
+      type: object
+    MarkdownProseMirrorNode:
+      description: 'A text node that contains plain text content'
+      properties:
+        markdown:
+          description: 'The markdown content of the node'
+          type: string
+          example: 'This is **some text** content'
+        type:
+          type: string
+      type: object
+    ParagraphNode:
+      description: 'A paragraph node that contains text and other inline nodes'
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/ProseMirrorNode'
+        -
+          properties:
+            type:
+              type: string
+          type: object
+    ProseMirrorNode:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - markdown
+            - image
+            - youtube
+          nullable: false
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          markdown: '#/components/schemas/MarkdownProseMirrorNode'
+          image: '#/components/schemas/ImageNode'
+          youtube: '#/components/schemas/YouTubeProseMirrorNode'
+      oneOf:
+        -
+          $ref: '#/components/schemas/MarkdownProseMirrorNode'
+        -
+          $ref: '#/components/schemas/ImageNode'
+        -
+          $ref: '#/components/schemas/YouTubeProseMirrorNode'
+    TextNode:
+      description: 'A text node that contains plain text content'
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/ProseMirrorNode'
+        -
+          properties:
+            text:
+              description: 'The text content of the node'
+              type: string
+              example: 'This is some text content'
+            marks:
+              description: 'The marks applied to the text'
+              type: array
+              items:
+                $ref: '#/components/schemas/Mark'
+              nullable: true
+            type:
+              type: string
+          type: object
+    YouTubeProseMirrorNode:
+      description: 'A youtube node that represents an embedded YouTube video in ProseMirror'
+      required:
+        - type
+        - youtubeId
+        - aspectRatio
+      properties:
+        youtubeId:
+          description: 'The YouTube video ID'
+          type: string
+        aspectRatio:
+          $ref: '#/components/schemas/AspectRatio'
+        type:
+          type: string
+      type: object
+    NotionImageBlockMetadata:
+      properties:
+        id:
+          type: string
+        originalImageUrl:
+          type: string
+          nullable: true
+      type: object
+    PostAuthor:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+      type: object
+    PostCategory:
+      properties:
+        type:
+          $ref: '#/components/schemas/PostCategoryType'
+        label:
+          description: 'The localized label of the category.'
+          type: string
+      type: object
+    PostCategoryType:
+      type: string
+      enum:
+        - feature
+        - learn
+        - tutorial
+        - science
+        - press
+    PostHero:
+      required:
+        - title
+        - primaryCategory
+        - appearance
+      properties:
+        title:
+          description: 'The title of the post.'
+          type: string
+        primaryCategory:
+          $ref: '#/components/schemas/PostCategory'
+        coverImage:
+          oneOf:
+            -
+              $ref: '#/components/schemas/MediaMeta'
+          nullable: true
+        coverImageSquare:
+          oneOf:
+            -
+              $ref: '#/components/schemas/MediaMeta'
+          nullable: true
+        coverImageHorizontal:
+          oneOf:
+            -
+              $ref: '#/components/schemas/MediaMeta'
+          nullable: true
+        coverImageVertical:
+          oneOf:
+            -
+              $ref: '#/components/schemas/MediaMeta'
+          nullable: true
+        appearance:
+          $ref: '#/components/schemas/PostHeroAppearance'
+      type: object
+    PostHeroAppearance:
+      required:
+        - foregroundStyle
+        - coverScaleType
+        - prefersMaskedImage
+      properties:
+        backgroundColor:
+          type: string
+          nullable: true
+        foregroundStyle:
+          $ref: '#/components/schemas/ForegroundStyle'
+        coverScaleType:
+          $ref: '#/components/schemas/CoverScaleType'
+        prefersMaskedImage:
+          type: boolean
+      type: object
+    PostTeaser:
+      required:
+        - id
+        - title
+        - coverScaleType
+        - readingTimeInMinutes
+        - hero
+        - url
+      properties:
+        id:
+          description: 'The unique identifier of the post.'
+          type: string
+          format: uuid
+        hero:
+          $ref: '#/components/schemas/PostHero'
+        title:
+          description: 'The title of the post.'
+          type: string
+        coverImage:
+          oneOf:
+            -
+              $ref: '#/components/schemas/MediaMeta'
+          nullable: true
+        publishedAt:
+          description: 'The publication date of the post.'
+          type: string
+          format: date-time
+        readingTimeInMinutes:
+          description: 'The average reading time of the post in minutes assuming a reading speed of 200 words per minute.'
+          type: integer
+        url:
+          type: string
+      type: object
+    ShowTipResponse:
+      required:
+        - document
+        - author
+        - publishedAt
+        - hero
+        - url
+      properties:
+        document:
+          $ref: '#/components/schemas/DocumentProseMirrorNode'
+        author:
+          $ref: '#/components/schemas/PostAuthor'
+        publishedAt:
+          type: string
+          format: date-time
+        hero:
+          $ref: '#/components/schemas/PostHero'
+        url:
+          type: string
+      type: object
+    Mark:
+      description: 'A mark that can be applied to text nodes to add formatting or other attributes'
+      properties:
+        type:
+          $ref: '#/components/schemas/MarkType'
+        attrs:
+          description: 'The attributes of the mark'
+          properties:
+            href:
+              description: 'The URL for link marks'
+              type: string
+              example: 'https://example.com'
+          type: object
+          nullable: true
+      type: object
+    MarkType:
+      description: 'The type of mark that can be applied to text nodes'
+      type: string
+      enum:
+        - bold
+        - italic
+        - underline
+        - strike
+        - superscript
+        - link

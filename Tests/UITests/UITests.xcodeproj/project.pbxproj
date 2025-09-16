@@ -11,6 +11,7 @@
 		809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 809757DB2E61D2AD009B747D /* SpeziOneSecInterface */; };
 		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
+		DF40823A2E7A0B130032B7AD /* APIPackage in Frameworks */ = {isa = PBXBuildFile; productRef = DF4082392E7A0B130032B7AD /* APIPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2F6D13AC28F5F386007C25D6 /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB0758A299DDB9000C0B37F /* TestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestApp.xctestplan; sourceTree = "<group>"; };
 		80FCAA082E4E3BE700A054D6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		DF4082382E7A0A430032B7AD /* APIPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = APIPackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF40823A2E7A0B130032B7AD /* APIPackage in Frameworks */,
 				808D39EC2E68401400431D20 /* SpeziOneSec in Frameworks */,
 				80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */,
 				809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */,
@@ -92,6 +95,7 @@
 		2F6D138928F5F384007C25D6 = {
 			isa = PBXGroup;
 			children = (
+				DF4082382E7A0A430032B7AD /* APIPackage */,
 				2FB0758A299DDB9000C0B37F /* TestApp.xctestplan */,
 				2F68C3C6292E9F8F00B3E12C /* SpeziOneSec */,
 				80B77CF62E422FB70089C6B4 /* TestApp */,
@@ -143,6 +147,7 @@
 			packageProductDependencies = (
 				809757D72E61D282009B747D /* SpeziOneSec */,
 				809757DB2E61D2AD009B747D /* SpeziOneSecInterface */,
+				DF4082392E7A0B130032B7AD /* APIPackage */,
 			);
 			productName = Example;
 			productReference = 2F6D139228F5F384007C25D6 /* TestApp.app */;
@@ -682,6 +687,10 @@
 		809757DD2E61D303009B747D /* SpeziOneSec */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SpeziOneSec;
+		};
+		DF4082392E7A0B130032B7AD /* APIPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = APIPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
