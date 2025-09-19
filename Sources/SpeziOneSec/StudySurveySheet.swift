@@ -21,8 +21,10 @@ struct StudySurveySheet: View {
     var body: some View {
         if let url = speziOneSec.surveyUrl {
             NavigationStack {
-                WebView(url: url) { webView in
-                    await onNavigation(webView)
+                WebView(url: url) { request in
+                    await shouldNavigate(request)
+                } didNavigate: { webView in
+                    await didNavigate(webView)
                 }
                 .navigationTitle("Stanford Study")
                 .navigationBarTitleDisplayMode(.inline)
@@ -97,7 +99,18 @@ struct StudySurveySheet: View {
         #endif
     }
     
-    private func onNavigation(_ webView: WebViewProxy) async {
+    
+    private func shouldNavigate(_ request: URLRequest) async -> Bool {
+        if request.url?.host() == "one-sec.app" {
+            isDone = true
+            dismiss()
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    private func didNavigate(_ webView: WebViewProxy) async {
         if await webView.pageContainsField(named: "healthkit_export_initiated") {
             await initiateHealthExport()
         } else if await webView.pageContainsElement(withId: "surveyacknowledgment") {

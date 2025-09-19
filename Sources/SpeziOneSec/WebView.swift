@@ -13,9 +13,13 @@ private import WebKit
 
 
 struct WebView: View {
+    typealias ShouldNavigate = @MainActor (URLRequest) async -> Bool
+    typealias DidNavigate = @MainActor (WebViewProxy) async -> Void
+    
     fileprivate struct Config: Sendable {
         let initialUrl: URL
-        let onNavigation: @MainActor (WebViewProxy) async -> Void
+        let shouldNavigate: ShouldNavigate
+        let didNavigate: DidNavigate
     }
     
     fileprivate struct AlertConfig: Sendable {
@@ -112,8 +116,8 @@ struct WebView: View {
         }
     }
     
-    init(url: URL, onNavigation: @MainActor @escaping (WebViewProxy) async -> Void) {
-        config = .init(initialUrl: url, onNavigation: onNavigation)
+    init(url: URL, shouldNavigate: @escaping ShouldNavigate, didNavigate: @escaping DidNavigate) {
+        config = .init(initialUrl: url, shouldNavigate: shouldNavigate, didNavigate: didNavigate)
     }
 }
 
@@ -185,10 +189,20 @@ extension WebViewImpl {
         
         // MARK: WKNavigationDelegate
         
+        
+        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
+            switch await parent.config.shouldNavigate(navigationAction.request) {
+            case true:
+                navigationAction.shouldPerformDownload ? .download : .allow
+            case false:
+                .cancel
+            }
+        }
+        
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // swiftlint:disable:this implicitly_unwrapped_optional
             parent.currentUrl = webView.url
             Task {
-                await parent.config.onNavigation(WebViewProxy(webView))
+                await parent.config.didNavigate(WebViewProxy(webView))
             }
         }
         
