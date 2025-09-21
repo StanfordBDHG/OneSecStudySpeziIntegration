@@ -121,7 +121,7 @@ struct StudySurveySheet: View {
     
     private func initiateHealthExport() async {
         do {
-            try await speziOneSec.initiateBulkExport()
+            try await speziOneSec.triggerHealthExport(forceSessionReset: true)
         } catch {
             // Q how to handle this? (will depend on the specific error. eg for missing permissions we could throw up an alert, etc)
             speziOneSec.logger.error("Error initiating bulk health export: \(error)")

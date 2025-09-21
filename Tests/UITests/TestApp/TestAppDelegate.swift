@@ -16,19 +16,25 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? // swiftlint:disable:this discouraged_optional_collection
     ) -> Bool {
+        let cal = Calendar.current
         SpeziOneSecInterface.initialize(
             application,
             launchOptions: launchOptions,
             healthExportConfig: .init(
                 destination: FileManager.default.temporaryDirectory,
                 sampleTypes: [HKQuantityType(.stepCount), HKCategoryType(.sleepAnalysis)],
-                timeRange: Date.now..<Date.now
+                timeRange: cal.date(byAdding: .year, value: -1, to: .now)!..<Date.now,
             ) { urls in
                 Task {
                     try await self.handleHealthExportUrls(urls)
                 }
             }
         )
+        print(Bundle.main.bundlePath)
+        let contents = try! FileManager.default.contentsOfDirectory(atPath: Bundle.main.bundlePath)
+        for name in contents {
+            print("- \(name)")
+        }
         return true
     }
     

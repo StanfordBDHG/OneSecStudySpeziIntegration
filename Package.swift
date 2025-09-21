@@ -21,7 +21,8 @@ let package = Package(
         .library(name: "SpeziOneSec", type: .dynamic, targets: ["SpeziOneSec"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", .upToNextMinor(from: "0.1.0")),
+//        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", .upToNextMinor(from: "0.1.0")),
+        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", revision: "49f0e8f6559e6432e1ef3713bfbd2d7c93fb9919"),
         .package(url: "https://github.com/StanfordSpezi/Spezi.git", from: "1.9.2"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0"),
         .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),
