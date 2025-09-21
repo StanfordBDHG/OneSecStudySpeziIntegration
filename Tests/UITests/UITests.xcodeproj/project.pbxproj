@@ -242,7 +242,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nenv\n\ncopy() {\n    cp -r \"${BUILT_PRODUCTS_DIR}/${1}_${1}.bundle\" \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/${1}_${1}.bundle\"\n}\n\ncopy \"SpeziFoundation\"\ncopy \"SpeziHealthKit\"\ncopy \"HealthKitOnFHIR\"\n\n\n\n\n\n\n\n\n";
+			shellScript = "copy() {\n    cp -r \"${BUILT_PRODUCTS_DIR}/${1}_${1}.bundle\" \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/${1}_${1}.bundle\"\n}\n\ncopy \"SpeziFoundation\"\ncopy \"SpeziHealthKit\"\ncopy \"HealthKitOnFHIR\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
