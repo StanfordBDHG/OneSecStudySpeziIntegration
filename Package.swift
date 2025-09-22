@@ -22,7 +22,7 @@ let package = Package(
     ],
     dependencies: [
 //        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", .upToNextMinor(from: "0.1.0")),
-        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", revision: "49f0e8f6559e6432e1ef3713bfbd2d7c93fb9919"),
+        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", revision: "97ad3185c9a43937e2a8a3d6c18319ebaa19f09d"),
         .package(url: "https://github.com/StanfordSpezi/Spezi.git", from: "1.9.2"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0"),
         .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),

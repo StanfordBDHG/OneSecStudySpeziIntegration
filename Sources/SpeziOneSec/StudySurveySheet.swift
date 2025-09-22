@@ -105,6 +105,10 @@ struct StudySurveySheet: View {
             
             if url.path().contains("survey-callback/success") {
                 speziOneSec.updateState(.completed)
+            } else if url.path().contains("survey-callback/noteligible") {
+                speziOneSec.updateState(.unavailable)
+            } else if url.path().contains("survey-callback/waitingforconsent") {
+                speziOneSec.updateState(.awaitingParentalConsent)
             }
             
             isDone = true
