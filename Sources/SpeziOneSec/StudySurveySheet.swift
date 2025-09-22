@@ -101,9 +101,15 @@ struct StudySurveySheet: View {
     
     
     private func shouldNavigate(_ request: URLRequest) async -> Bool {
-        if request.url?.host() == "one-sec.app" {
+        if let url = request.url, url.host() == "one-sec.app" {
+            
+            if url.path().contains("survey-callback/success") {
+                speziOneSec.updateState(.completed)
+            }
+            
             isDone = true
             dismiss()
+            
             return false
         } else {
             return true
