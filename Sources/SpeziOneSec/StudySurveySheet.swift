@@ -122,10 +122,8 @@ struct StudySurveySheet: View {
     
     private func didNavigate(_ webView: WebViewProxy) async {
         if await webView.pageContainsField(named: "healthkit_export_initiated") {
-            await initiateHealthExport()
-        } else if await webView.pageContainsElement(withId: "surveyacknowledgment") {
-            isDone = true
             speziOneSec.updateState(.active)
+            await initiateHealthExport()
         }
     }
     
