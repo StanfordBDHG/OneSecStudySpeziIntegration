@@ -101,23 +101,20 @@ struct StudySurveySheet: View {
     
     
     private func shouldNavigate(_ request: URLRequest) async -> Bool {
-        if let url = request.url, url.host() == "one-sec.app" {
-            
-            if url.path().contains("survey-callback/success") {
-                speziOneSec.updateState(.completed)
-            } else if url.path().contains("survey-callback/noteligible") {
-                speziOneSec.updateState(.unavailable)
-            } else if url.path().contains("survey-callback/waitingforconsent") {
-                speziOneSec.updateState(.awaitingParentalConsent)
-            }
-            
-            isDone = true
-            dismiss()
-            
-            return false
-        } else {
+        guard let url = request.url, url.host() == "one-sec.app" else {
             return true
         }
+        let path = url.path()
+        if path.contains("survey-callback/success") {
+            speziOneSec.updateState(.completed)
+        } else if path.contains("survey-callback/noteligible") {
+            speziOneSec.updateState(.unavailable)
+        } else if path.contains("survey-callback/waitingforconsent") {
+            speziOneSec.updateState(.awaitingParentalConsent)
+        }
+        isDone = true
+        dismiss()
+        return false
     }
     
     private func didNavigate(_ webView: WebViewProxy) async {
