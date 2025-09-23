@@ -30,11 +30,6 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
                 }
             }
         )
-        print(Bundle.main.bundlePath)
-        let contents = try! FileManager.default.contentsOfDirectory(atPath: Bundle.main.bundlePath)
-        for name in contents {
-            print("- \(name)")
-        }
         return true
     }
     
