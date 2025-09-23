@@ -21,8 +21,10 @@ struct StudySurveySheet: View {
     var body: some View {
         if let url = speziOneSec.surveyUrl {
             NavigationStack {
-                WebView(url: url) { webView in
-                    await onNavigation(webView)
+                WebView(url: url) { request in
+                    await shouldNavigate(request)
+                } didNavigate: { webView in
+                    await didNavigate(webView)
                 }
                 .navigationTitle("Stanford Study")
                 .navigationBarTitleDisplayMode(.inline)
@@ -97,18 +99,34 @@ struct StudySurveySheet: View {
         #endif
     }
     
-    private func onNavigation(_ webView: WebViewProxy) async {
+    
+    private func shouldNavigate(_ request: URLRequest) async -> Bool {
+        guard let url = request.url, url.host() == "one-sec.app" else {
+            return true
+        }
+        let path = url.path()
+        if path.contains("survey-callback/success") {
+            speziOneSec.updateState(.completed)
+        } else if path.contains("survey-callback/noteligible") {
+            speziOneSec.updateState(.unavailable)
+        } else if path.contains("survey-callback/waitingforconsent") {
+            speziOneSec.updateState(.awaitingParentalConsent)
+        }
+        isDone = true
+        dismiss()
+        return false
+    }
+    
+    private func didNavigate(_ webView: WebViewProxy) async {
         if await webView.pageContainsField(named: "healthkit_export_initiated") {
-            await initiateHealthExport()
-        } else if await webView.pageContainsElement(withId: "surveyacknowledgment") {
-            isDone = true
             speziOneSec.updateState(.active)
+            await initiateHealthExport()
         }
     }
     
     private func initiateHealthExport() async {
         do {
-            try await speziOneSec.initiateBulkExport()
+            try await speziOneSec.triggerHealthExport(forceSessionReset: true)
         } catch {
             // Q how to handle this? (will depend on the specific error. eg for missing permissions we could throw up an alert, etc)
             speziOneSec.logger.error("Error initiating bulk health export: \(error)")

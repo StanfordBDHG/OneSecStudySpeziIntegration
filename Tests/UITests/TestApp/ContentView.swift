@@ -6,17 +6,24 @@
 // SPDX-License-Identifier: MIT
 //
 
-import SpeziOneSecInterface
+@_spi(APISupport) import SpeziOneSecInterface
 import SwiftUI
 
 
 @available(iOS 17, *)
 struct ContentView: View {
+    @Environment(SpeziOneSecModule.self) private var speziOneSec
+    
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     StudyButton()
+                    Button("Trigger Health Export") {
+                        Task {
+                            try await speziOneSec.triggerHealthExport(forceSessionReset: true)
+                        }
+                    }
                 }
                 Section {
                     WebViewAlertAndConfimTestButton()

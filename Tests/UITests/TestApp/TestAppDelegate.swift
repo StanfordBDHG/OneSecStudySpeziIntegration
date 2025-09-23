@@ -12,17 +12,29 @@ import SwiftUI
 
 
 final class TestAppDelegate: NSObject, UIApplicationDelegate {
+    private var sampleTypes: Set<HKObjectType> {
+        var types: Set<HKObjectType> = [
+            HKQuantityType(.stepCount),
+            HKCategoryType(.sleepAnalysis)
+        ]
+        if #available(iOS 18.0, *) {
+            types.insert(.stateOfMindType())
+        }
+        return types
+    }
+    
     func application(
         _ application: UIApplication,
         willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? // swiftlint:disable:this discouraged_optional_collection
     ) -> Bool {
+        let cal = Calendar.current
         SpeziOneSecInterface.initialize(
             application,
             launchOptions: launchOptions,
             healthExportConfig: .init(
                 destination: FileManager.default.temporaryDirectory,
-                sampleTypes: [HKQuantityType(.stepCount), HKCategoryType(.sleepAnalysis)],
-                timeRange: Date.now..<Date.now
+                sampleTypes: sampleTypes,
+                timeRange: cal.date(byAdding: .year, value: -1, to: .now)!..<Date.now, // swiftlint:disable:this force_unwrapping
             ) { urls in
                 Task {
                     try await self.handleHealthExportUrls(urls)
@@ -31,7 +43,6 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
         )
         return true
     }
-    
     
     private func handleHealthExportUrls<S: AsyncSequence>(_ urls: S) async throws where S.Element == URL {
         for try await url in urls {

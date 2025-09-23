@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		808D39EC2E68401400431D20 /* SpeziOneSec in Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; };
-		809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 809757D72E61D282009B747D /* SpeziOneSec */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 809757DB2E61D2AD009B747D /* SpeziOneSecInterface */; };
+		80B8B5712E80237E00862E90 /* SpeziOneSec in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80B8B56F2E80237E00862E90 /* SpeziOneSec */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FCAA082E4E3BE700A054D6 /* WebKit.framework */; platformFilters = (ios, macos, xros, ); };
 /* End PBXBuildFile section */
 
@@ -40,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				809757D92E61D282009B747D /* SpeziOneSec in Embed Frameworks */,
+				80B8B5712E80237E00862E90 /* SpeziOneSec in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				808D39EC2E68401400431D20 /* SpeziOneSec in Frameworks */,
 				80FCAA092E4E3BE700A054D6 /* WebKit.framework in Frameworks */,
 				809757DC2E61D2AD009B747D /* SpeziOneSecInterface in Frameworks */,
 			);
@@ -128,6 +126,7 @@
 				2F6D138E28F5F384007C25D6 /* Sources */,
 				2F6D138F28F5F384007C25D6 /* Frameworks */,
 				2F6D139028F5F384007C25D6 /* Resources */,
+				80B8B56D2E8021D000862E90 /* ShellScript */,
 				2F9CBECE2A76C412009818FF /* Embed Watch Content */,
 				8027B07C2E562778001E0A8F /* Embed Frameworks */,
 			);
@@ -141,8 +140,8 @@
 			);
 			name = TestApp;
 			packageProductDependencies = (
-				809757D72E61D282009B747D /* SpeziOneSec */,
 				809757DB2E61D2AD009B747D /* SpeziOneSecInterface */,
+				80B8B56F2E80237E00862E90 /* SpeziOneSec */,
 			);
 			productName = Example;
 			productReference = 2F6D139228F5F384007C25D6 /* TestApp.app */;
@@ -226,6 +225,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		80B8B56D2E8021D000862E90 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "copy() {\n    cp -r \"${BUILT_PRODUCTS_DIR}/${1}_${1}.bundle\" \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/${1}_${1}.bundle\"\n}\n\ncopy \"SpeziFoundation\"\ncopy \"SpeziHealthKit\"\ncopy \"HealthKitOnFHIR\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F6D138E28F5F384007C25D6 /* Sources */ = {
@@ -664,22 +683,22 @@
 			repositoryURL = "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		809757D72E61D282009B747D /* SpeziOneSec */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SpeziOneSec;
-		};
 		809757DB2E61D2AD009B747D /* SpeziOneSecInterface */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 809757DA2E61D2AD009B747D /* XCRemoteSwiftPackageReference "OneSecStudySpeziIntegrationInterface" */;
 			productName = SpeziOneSecInterface;
 		};
 		809757DD2E61D303009B747D /* SpeziOneSec */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpeziOneSec;
+		};
+		80B8B56F2E80237E00862E90 /* SpeziOneSec */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SpeziOneSec;
 		};

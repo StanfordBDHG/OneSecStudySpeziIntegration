@@ -77,7 +77,7 @@ final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Senda
                     // we now check if it has completed, and, if not, tell it to continue.
                     let session = try await healthExportSession()
                     if session.state != .completed {
-                        try await initiateBulkExport()
+                        try await triggerHealthExport(forceSessionReset: false)
                     }
                 }
             } catch {
@@ -96,13 +96,13 @@ final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Senda
     override func makeSpeziOneSecSheet() -> AnyView {
         AnyView(StudySurveySheet())
     }
-}
-
-
-// MARK: HealthKit Data Collection
-
-extension SpeziOneSec {
-    func initiateBulkExport() async throws {
+    
+    // MARK: HealthKit Data Collection
+    
+    override func triggerHealthExport(forceSessionReset: Bool) async throws {
+        if forceSessionReset {
+            try await bulkExporter.deleteSessionRestorationInfo(for: .speziOneSec)
+        }
         if !fileManager.itemExists(at: healthExportConfig.destination) {
             try fileManager.createDirectory(at: healthExportConfig.destination, withIntermediateDirectories: true)
         }
