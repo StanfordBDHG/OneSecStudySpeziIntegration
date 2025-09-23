@@ -21,11 +21,10 @@ let package = Package(
         .library(name: "SpeziOneSec", type: .dynamic, targets: ["SpeziOneSec"])
     ],
     dependencies: [
-//        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", .upToNextMinor(from: "0.1.0")),
-        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", revision: "97ad3185c9a43937e2a8a3d6c18319ebaa19f09d"),
+        .package(url: "https://github.com/StanfordBDHG/OneSecStudySpeziIntegrationInterface.git", .upToNextMinor(from: "0.1.2")),
         .package(url: "https://github.com/StanfordSpezi/Spezi.git", from: "1.9.2"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0"),
-        .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.3"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziHealthKit.git", from: "1.2.7"),
         .package(url: "https://github.com/StanfordBDHG/HealthKitOnFHIR.git", from: "1.1.2"),
         .package(url: "https://github.com/StanfordSpezi/SpeziStorage.git", from: "2.1.1")
     ] + swiftLintPackage(),
