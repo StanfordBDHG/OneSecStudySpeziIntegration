@@ -22,7 +22,7 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
             launchOptions: launchOptions,
             healthExportConfig: .init(
                 destination: FileManager.default.temporaryDirectory,
-                sampleTypes: [HKQuantityType(.stepCount), HKCategoryType(.sleepAnalysis)],
+                sampleTypes: sampleTypes,
                 timeRange: cal.date(byAdding: .year, value: -1, to: .now)!..<Date.now,
             ) { urls in
                 Task {
@@ -43,5 +43,17 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
         for try await url in urls {
             print("Did create export batch \(url)")
         }
+    }
+    
+    
+    private var sampleTypes: Set<HKObjectType> {
+        var types: Set<HKObjectType> = [
+            HKQuantityType(.stepCount),
+            HKCategoryType(.sleepAnalysis)
+        ]
+        if #available(iOS 18.0, *) {
+            types.insert(.stateOfMindType())
+        }
+        return types
     }
 }
