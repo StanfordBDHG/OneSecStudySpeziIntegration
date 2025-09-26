@@ -114,6 +114,7 @@ final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Senda
         } else {
             healthExportConfig.didStartExport(AnyAsyncSequence(unsafelyAssumingDoesntThrow: stream.compactMap(\.self)))
         }
+        _trackCompletion(of: session)
     }
     
     
@@ -127,6 +128,19 @@ final class SpeziOneSec: SpeziOneSecModule, Module, EnvironmentAccessible, Senda
             batchSize: .automatic,
             using: HKSampleToFHIRProcessor(outputDirectory: healthExportConfig.destination)
         )
+    }
+    
+    private func _trackCompletion(of session: some BulkExportSession) {
+        let isCompleted = withObservationTracking {
+            session.state == .completed
+        } onChange: {
+            Task { @MainActor in
+                self._trackCompletion(of: session)
+            }
+        }
+        if isCompleted {
+            healthExportConfig.didEndExport()
+        }
     }
 }
 
