@@ -35,18 +35,22 @@ final class TestAppDelegate: NSObject, UIApplicationDelegate {
                 destination: FileManager.default.temporaryDirectory,
                 sampleTypes: sampleTypes,
                 timeRange: cal.date(byAdding: .year, value: -1, to: .now)!..<Date.now, // swiftlint:disable:this force_unwrapping
-            ) { urls in
-                Task {
-                    try await self.handleHealthExportUrls(urls)
-                }
-            }
+                didStartExport: handleSpeziHealthExportDidStart,
+                didEndExport: handleSpeziHealthExportDidEnd
+            )
         )
         return true
     }
     
-    private func handleHealthExportUrls<S: AsyncSequence>(_ urls: S) async throws where S.Element == URL {
-        for try await url in urls {
-            print("Did create export batch \(url)")
+    private func handleSpeziHealthExportDidStart<S: AsyncSequence>(_ urls: S) where S.Element == URL {
+        Task {
+            for try await url in urls {
+                print("Did create export batch \(url)")
+            }
         }
+    }
+    
+    private func handleSpeziHealthExportDidEnd() {
+        print("Health Export complete")
     }
 }
