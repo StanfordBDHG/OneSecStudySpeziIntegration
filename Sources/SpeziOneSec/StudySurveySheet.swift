@@ -74,7 +74,7 @@ struct StudySurveySheet: View {
         } message: {
             Text(
                 """
-                Are you sure you want to cancel enrolling in the [TODO STUDY NAME] study?
+                Are you sure you want to cancel enrolling in the study?
                 You can re-enroll at a later time if you feel like it.
                 """
             )
