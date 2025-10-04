@@ -31,10 +31,8 @@ struct StudySurveySheet: View {
                 }
                 .overlay {
                     if !didCompleteInitialNavigation {
-                        VStack {
-                            ProgressView("Loading…")
-                                .controlSize(.large)
-                        }
+                        ProgressView("Loading…")
+                            .controlSize(.large)
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)

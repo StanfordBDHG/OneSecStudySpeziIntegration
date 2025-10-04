@@ -181,12 +181,12 @@ private struct WebViewImpl: UIViewRepresentable {
         let webView = WKWebView(frame: .zero)
         webView.navigationDelegate = coordinator
         webView.uiDelegate = coordinator
-        coordinator.kvoObservations.append(webView.observe(\.estimatedProgress, options: [.new]) { [weak coordinator] webView, change in
-            guard let coordinator, let progress = change.newValue else {
+        coordinator.kvoObservations.append(webView.observe(\.estimatedProgress, options: [.new]) { [weak coordinator] _, change in
+            guard let coordinator else {
                 return
             }
             MainActor.assumeIsolated {
-                currentProgress = coordinator.isNavigating ? progress : nil
+                currentProgress = coordinator.isNavigating ? change.newValue : nil
             }
         })
         webView.load(URLRequest(url: config.initialUrl))
@@ -222,7 +222,10 @@ extension WebViewImpl {
             }
         }
         
-        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        func webView(
+            _ webView: WKWebView,
+            didStartProvisionalNavigation navigation: WKNavigation! // swiftlint:disable:this implicitly_unwrapped_optional
+        ) {
             isNavigating = true
             parent.currentProgress = 0
         }
