@@ -235,6 +235,9 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/SpeziFoundation_SpeziFoundation.bundle",
+				"$(BUILT_PRODUCTS_DIR)/SpeziHealthKit_SpeziHealthKit.bundle",
+				"$(BUILT_PRODUCTS_DIR)/HealthKitOnFHIR_HealthKitOnFHIR.bundle",
 			);
 			outputFileListPaths = (
 			);

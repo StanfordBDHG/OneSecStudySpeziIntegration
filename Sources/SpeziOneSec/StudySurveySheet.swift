@@ -15,18 +15,26 @@ struct StudySurveySheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SpeziOneSec.self) private var speziOneSec
     
+    @State private var didCompleteInitialNavigation = false
     @State private var isShowingCancelAlert = false
     @State private var isDone = false
+    @State private var currentPageLoadProgress: Double?
     
     var body: some View {
         if let url = speziOneSec.surveyUrl {
             NavigationStack {
-                WebView(url: url) { request in
+                WebView(url: url, currentProgress: $currentPageLoadProgress) { request in
                     await shouldNavigate(request)
                 } didNavigate: { webView in
+                    didCompleteInitialNavigation = true
                     await didNavigate(webView)
                 }
-                .navigationTitle("Stanford Study")
+                .overlay {
+                    if !didCompleteInitialNavigation {
+                        ProgressView("Loading…")
+                            .controlSize(.large)
+                    }
+                }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     if !isDone {
@@ -36,6 +44,16 @@ struct StudySurveySheet: View {
                     } else {
                         ToolbarItem(placement: .confirmationAction) {
                             confirmButton
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        VStack(spacing: 4) {
+                            Text("Stanford Study")
+                                .font(.headline)
+                            if let progress = currentPageLoadProgress {
+                                ProgressView(value: progress)
+                                    .progressViewStyle(.linear)
+                            }
                         }
                     }
                 }
